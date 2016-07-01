@@ -27,6 +27,9 @@ import UIKit
 
 class ActivityViewController: UIViewController {
 
+    @IBOutlet weak var progressView: CustomProgressView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -38,5 +41,24 @@ class ActivityViewController: UIViewController {
     }
 
 
+    @IBAction func evenMoreProgress(sender: UIButton) {
+        progressView.progress += CGFloat(10 * drand48())
+    }
+    
+    
+    @IBAction func moreProgress(sender: UIButton) {
+        print(drand48())
+        progressView.progress += CGFloat(drand48())
+    }
+    
+    
+    @IBAction func lessProgress(sender: UIButton) {
+        progressView.progress -= CGFloat(drand48())
+    }
+
+    
+    @IBAction func evenLessProgress(sender: UIButton) {
+        progressView.progress -= CGFloat(10 * drand48())
+    }
 }
 

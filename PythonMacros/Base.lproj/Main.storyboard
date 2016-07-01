@@ -1,26 +1,119 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="nV2-e5-XHF">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Activity View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Navigation Controller-->
+        <scene sceneID="bdf-B4-rs9">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ActivityViewController" customModule="PythonMacros" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="nV2-e5-XHF" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jOQ-s5-l7l">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="gUW-7E-rlr" kind="relationship" relationship="rootViewController" id="6Ng-cl-9gV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="59j-Vc-Bqv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-34" y="426"/>
+        </scene>
+        <!--Activity-->
+        <scene sceneID="unD-9q-r9k">
+            <objects>
+                <viewController title="Activity" id="gUW-7E-rlr" customClass="ActivityViewController" customModule="PythonMacros" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="JMM-VL-6YO"/>
+                        <viewControllerLayoutGuide type="bottom" id="4Pp-8Q-uUO"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="Arw-ec-hv1">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="toe-NP-Sio" customClass="CustomProgressView" customModule="PythonMacros" customModuleProvider="target">
+                                <rect key="frame" x="20" y="72" width="560" height="470"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="numberRotations">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="progress">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" red="0.17254901960784313" green="0.97254901960784312" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="10" height="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.29999999999999999"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="OTn-bk-VfU">
+                                <rect key="frame" x="20" y="550" width="560" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="igR-EV-RLU">
+                                        <rect key="frame" x="0.0" y="0.0" width="140" height="30"/>
+                                        <state key="normal" title="Even More"/>
+                                        <connections>
+                                            <action selector="evenMoreProgress:" destination="gUW-7E-rlr" eventType="touchUpInside" id="c4v-Qe-vbg"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aed-s4-gYK">
+                                        <rect key="frame" x="140" y="0.0" width="140" height="30"/>
+                                        <state key="normal" title="More"/>
+                                        <connections>
+                                            <action selector="moreProgress:" destination="gUW-7E-rlr" eventType="touchUpInside" id="VId-h4-OKA"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NkE-jK-wQn">
+                                        <rect key="frame" x="280" y="0.0" width="140" height="30"/>
+                                        <state key="normal" title="Less"/>
+                                        <connections>
+                                            <action selector="lessProgress:" destination="gUW-7E-rlr" eventType="touchUpInside" id="onk-H0-fxx"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xb7-qe-SMX">
+                                        <rect key="frame" x="420" y="0.0" width="140" height="30"/>
+                                        <state key="normal" title="Even Less"/>
+                                        <connections>
+                                            <action selector="evenLessProgress:" destination="gUW-7E-rlr" eventType="touchUpInside" id="fc9-O6-9HL"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="OTn-bk-VfU" firstAttribute="leading" secondItem="Arw-ec-hv1" secondAttribute="leadingMargin" id="0jP-AA-G4y"/>
+                            <constraint firstItem="4Pp-8Q-uUO" firstAttribute="top" secondItem="OTn-bk-VfU" secondAttribute="bottom" constant="20" id="VqH-NX-sGp"/>
+                            <constraint firstItem="OTn-bk-VfU" firstAttribute="top" secondItem="toe-NP-Sio" secondAttribute="bottom" constant="8" id="jRB-lw-TuS"/>
+                            <constraint firstItem="toe-NP-Sio" firstAttribute="top" secondItem="JMM-VL-6YO" secondAttribute="bottom" constant="8" id="lpi-0h-P7Z"/>
+                            <constraint firstItem="toe-NP-Sio" firstAttribute="trailing" secondItem="Arw-ec-hv1" secondAttribute="trailingMargin" id="qsO-Jd-rlx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OTn-bk-VfU" secondAttribute="trailing" id="vcy-dY-gLl"/>
+                            <constraint firstItem="toe-NP-Sio" firstAttribute="leading" secondItem="Arw-ec-hv1" secondAttribute="leadingMargin" id="zLV-xS-rAM"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Activity Progress" id="VdA-JV-uCs"/>
+                    <connections>
+                        <outlet property="progressView" destination="toe-NP-Sio" id="J6e-oR-eZy"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nSY-KC-6d1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="673" y="426"/>
         </scene>
     </scenes>
 </document>
