@@ -10,7 +10,7 @@
         <scene sceneID="bdf-B4-rs9">
             <objects>
                 <navigationController id="nV2-e5-XHF" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jOQ-s5-l7l">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="jOQ-s5-l7l">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -34,81 +34,180 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="toe-NP-Sio" customClass="CustomProgressView" customModule="PythonMacros" customModuleProvider="target">
-                                <rect key="frame" x="20" y="72" width="560" height="470"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="numberRotations">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="progress">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
-                                        <color key="value" red="0.17254901960784313" green="0.97254901960784312" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
-                                        <real key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                        <real key="value" value="4"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                        <size key="value" width="10" height="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                        <real key="value" value="0.29999999999999999"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="OTn-bk-VfU">
-                                <rect key="frame" x="20" y="550" width="560" height="30"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="f3E-Hz-OGC">
+                                <rect key="frame" x="20" y="72" width="560" height="508"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="igR-EV-RLU">
-                                        <rect key="frame" x="0.0" y="0.0" width="140" height="30"/>
-                                        <state key="normal" title="Even More"/>
-                                        <connections>
-                                            <action selector="evenMoreProgress:" destination="gUW-7E-rlr" eventType="touchUpInside" id="c4v-Qe-vbg"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aed-s4-gYK">
-                                        <rect key="frame" x="140" y="0.0" width="140" height="30"/>
-                                        <state key="normal" title="More"/>
-                                        <connections>
-                                            <action selector="moreProgress:" destination="gUW-7E-rlr" eventType="touchUpInside" id="VId-h4-OKA"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NkE-jK-wQn">
-                                        <rect key="frame" x="280" y="0.0" width="140" height="30"/>
-                                        <state key="normal" title="Less"/>
-                                        <connections>
-                                            <action selector="lessProgress:" destination="gUW-7E-rlr" eventType="touchUpInside" id="onk-H0-fxx"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xb7-qe-SMX">
-                                        <rect key="frame" x="420" y="0.0" width="140" height="30"/>
-                                        <state key="normal" title="Even Less"/>
-                                        <connections>
-                                            <action selector="evenLessProgress:" destination="gUW-7E-rlr" eventType="touchUpInside" id="fc9-O6-9HL"/>
-                                        </connections>
-                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WcT-Cf-qZx" userLabel="Activities View">
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="457"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="flK-zT-Ro2" userLabel="Outer Progress View" customClass="CustomProgressView" customModule="PythonMacros" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="560" height="457"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="numberRotations">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="progress">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                                        <color key="value" red="1" green="0.28235294117647058" blue="0.39215686274509803" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                        <real key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                        <real key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                        <size key="value" width="10" height="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                        <real key="value" value="0.40000000000000002"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="rotationDuration">
+                                                        <real key="value" value="0.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8nc-TQ-Ccq" userLabel="Middle Progress View" customClass="CustomProgressView" customModule="PythonMacros" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="560" height="457"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="numberRotations">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="progress">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                                        <color key="value" red="0.027450980390000001" green="0.70196078429999997" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                        <real key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="ringInset">
+                                                        <real key="value" value="24"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                        <real key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                        <size key="value" width="10" height="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                        <real key="value" value="0.40000000000000002"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="rotationDuration">
+                                                        <real key="value" value="0.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nks-Ti-tn2" userLabel="Inner Progress View" customClass="CustomProgressView" customModule="PythonMacros" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="560" height="457"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="numberRotations">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="progress">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                                        <color key="value" red="0.17254901959999999" green="0.97254901959999995" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                        <real key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="ringInset">
+                                                        <real key="value" value="48"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                        <real key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                        <size key="value" width="10" height="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                        <real key="value" value="0.40000000000000002"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="rotationDuration">
+                                                        <real key="value" value="0.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="nks-Ti-tn2" secondAttribute="bottom" id="7Pc-iZ-cEv"/>
+                                            <constraint firstAttribute="bottom" secondItem="flK-zT-Ro2" secondAttribute="bottom" id="BIt-hW-UQK"/>
+                                            <constraint firstAttribute="bottom" secondItem="8nc-TQ-Ccq" secondAttribute="bottom" id="JeL-Ja-4uw"/>
+                                            <constraint firstItem="flK-zT-Ro2" firstAttribute="top" secondItem="WcT-Cf-qZx" secondAttribute="top" id="NOu-9e-xeF"/>
+                                            <constraint firstAttribute="trailing" secondItem="nks-Ti-tn2" secondAttribute="trailing" id="ORX-Dd-CQu"/>
+                                            <constraint firstItem="8nc-TQ-Ccq" firstAttribute="top" secondItem="WcT-Cf-qZx" secondAttribute="top" id="Sl3-K7-c7f"/>
+                                            <constraint firstAttribute="trailing" secondItem="flK-zT-Ro2" secondAttribute="trailing" id="Yqo-Mp-guj"/>
+                                            <constraint firstItem="nks-Ti-tn2" firstAttribute="leading" secondItem="WcT-Cf-qZx" secondAttribute="leading" id="eTD-iJ-4wc"/>
+                                            <constraint firstAttribute="trailing" secondItem="8nc-TQ-Ccq" secondAttribute="trailing" id="lRW-XL-hhm"/>
+                                            <constraint firstItem="8nc-TQ-Ccq" firstAttribute="leading" secondItem="WcT-Cf-qZx" secondAttribute="leading" id="siu-rW-YzE"/>
+                                            <constraint firstItem="nks-Ti-tn2" firstAttribute="top" secondItem="WcT-Cf-qZx" secondAttribute="top" id="su0-KH-jaK"/>
+                                            <constraint firstItem="flK-zT-Ro2" firstAttribute="leading" secondItem="WcT-Cf-qZx" secondAttribute="leading" id="udi-Ll-D7g"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a test of the label layout" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7kt-CJ-O6t">
+                                        <rect key="frame" x="0.0" y="457" width="560" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="qwA-EO-s09" userLabel="Button Pane">
+                                        <rect key="frame" x="0.0" y="478" width="560" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D6U-Qv-fFx">
+                                                <rect key="frame" x="0.0" y="0.0" width="73" height="30"/>
+                                                <state key="normal" title="Even More"/>
+                                                <connections>
+                                                    <action selector="evenMoreProgress:" destination="gUW-7E-rlr" eventType="touchUpInside" id="ywi-w8-4ac"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xuv-Es-M8F">
+                                                <rect key="frame" x="141" y="0.0" width="36" height="30"/>
+                                                <state key="normal" title="More"/>
+                                                <connections>
+                                                    <action selector="moreProgress:" destination="gUW-7E-rlr" eventType="touchUpInside" id="vw3-cV-8sE"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wS5-SM-sdW">
+                                                <rect key="frame" x="266" y="0.0" width="30" height="30"/>
+                                                <state key="normal" title="Edit"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ce-6L-rbb">
+                                                <rect key="frame" x="387" y="0.0" width="32" height="30"/>
+                                                <state key="normal" title="Less"/>
+                                                <connections>
+                                                    <action selector="lessProgress:" destination="gUW-7E-rlr" eventType="touchUpInside" id="a6p-UB-ejH"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IcK-ih-fFs">
+                                                <rect key="frame" x="491" y="0.0" width="69" height="30"/>
+                                                <state key="normal" title="Even Less"/>
+                                                <connections>
+                                                    <action selector="evenLessProgress:" destination="gUW-7E-rlr" eventType="touchUpInside" id="wi4-46-hfs"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.011764705882352941" green="0.011764705882352941" blue="0.011764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="OTn-bk-VfU" firstAttribute="leading" secondItem="Arw-ec-hv1" secondAttribute="leadingMargin" id="0jP-AA-G4y"/>
-                            <constraint firstItem="4Pp-8Q-uUO" firstAttribute="top" secondItem="OTn-bk-VfU" secondAttribute="bottom" constant="20" id="VqH-NX-sGp"/>
-                            <constraint firstItem="OTn-bk-VfU" firstAttribute="top" secondItem="toe-NP-Sio" secondAttribute="bottom" constant="8" id="jRB-lw-TuS"/>
-                            <constraint firstItem="toe-NP-Sio" firstAttribute="top" secondItem="JMM-VL-6YO" secondAttribute="bottom" constant="8" id="lpi-0h-P7Z"/>
-                            <constraint firstItem="toe-NP-Sio" firstAttribute="trailing" secondItem="Arw-ec-hv1" secondAttribute="trailingMargin" id="qsO-Jd-rlx"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="OTn-bk-VfU" secondAttribute="trailing" id="vcy-dY-gLl"/>
-                            <constraint firstItem="toe-NP-Sio" firstAttribute="leading" secondItem="Arw-ec-hv1" secondAttribute="leadingMargin" id="zLV-xS-rAM"/>
+                            <constraint firstItem="f3E-Hz-OGC" firstAttribute="top" secondItem="JMM-VL-6YO" secondAttribute="bottom" constant="8" id="2Ye-zZ-WDj"/>
+                            <constraint firstItem="f3E-Hz-OGC" firstAttribute="leading" secondItem="Arw-ec-hv1" secondAttribute="leadingMargin" id="5zX-Nm-ZAX"/>
+                            <constraint firstItem="4Pp-8Q-uUO" firstAttribute="top" secondItem="f3E-Hz-OGC" secondAttribute="bottom" constant="20" id="Hf0-OG-RKh"/>
+                            <constraint firstItem="f3E-Hz-OGC" firstAttribute="trailing" secondItem="Arw-ec-hv1" secondAttribute="trailingMargin" id="jJR-ur-DcI"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Activity Progress" id="VdA-JV-uCs"/>
                     <connections>
-                        <outlet property="progressView" destination="toe-NP-Sio" id="J6e-oR-eZy"/>
+                        <outlet property="innerProgressView" destination="nks-Ti-tn2" id="mPe-5x-2Im"/>
+                        <outlet property="middleProgressView" destination="8nc-TQ-Ccq" id="W0V-04-bny"/>
+                        <outlet property="outerProgressView" destination="flK-zT-Ro2" id="9zb-Ju-Vab"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nSY-KC-6d1" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -27,7 +27,9 @@ import UIKit
 
 class ActivityViewController: UIViewController {
 
-    @IBOutlet weak var progressView: CustomProgressView!
+    @IBOutlet weak var outerProgressView: CustomProgressView!
+    @IBOutlet weak var middleProgressView: CustomProgressView!
+    @IBOutlet weak var innerProgressView: CustomProgressView!
     
     
     override func viewDidLoad() {
@@ -42,23 +44,30 @@ class ActivityViewController: UIViewController {
 
 
     @IBAction func evenMoreProgress(sender: UIButton) {
-        progressView.progress += CGFloat(10 * drand48())
+        outerProgressView.progress += CGFloat(10 * drand48())
+        middleProgressView.progress += CGFloat(10 * drand48())
+        innerProgressView.progress += CGFloat(10 * drand48())
     }
     
     
     @IBAction func moreProgress(sender: UIButton) {
-        print(drand48())
-        progressView.progress += CGFloat(drand48())
+        outerProgressView.progress += CGFloat(drand48())
+        middleProgressView.progress += CGFloat(drand48())
+        innerProgressView.progress += CGFloat(drand48())
     }
     
     
     @IBAction func lessProgress(sender: UIButton) {
-        progressView.progress -= CGFloat(drand48())
+        outerProgressView.progress -= CGFloat(drand48())
+        middleProgressView.progress -= CGFloat(drand48())
+        innerProgressView.progress -= CGFloat(drand48())
     }
 
     
     @IBAction func evenLessProgress(sender: UIButton) {
-        progressView.progress -= CGFloat(10 * drand48())
+        outerProgressView.progress -= CGFloat(10 * drand48())
+        middleProgressView.progress -= CGFloat(10 * drand48())
+        innerProgressView.progress -= CGFloat(10 * drand48())
     }
 }
 
