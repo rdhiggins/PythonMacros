@@ -12,6 +12,8 @@
 		7DCC93D51D26BEAF00E0A8F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DCC93D31D26BEAF00E0A8F5 /* Main.storyboard */; };
 		7DCC93D71D26BEAF00E0A8F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DCC93D61D26BEAF00E0A8F5 /* Assets.xcassets */; };
 		7DCC93DA1D26BEAF00E0A8F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DCC93D81D26BEAF00E0A8F5 /* LaunchScreen.storyboard */; };
+		7DCC93E41D26C00400E0A8F5 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 7DCC93E31D26C00400E0A8F5 /* README.md */; };
+		7DCC93E61D26C01E00E0A8F5 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 7DCC93E51D26C01E00E0A8F5 /* LICENSE */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		7DCC93D61D26BEAF00E0A8F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7DCC93D91D26BEAF00E0A8F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7DCC93DB1D26BEAF00E0A8F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7DCC93E31D26C00400E0A8F5 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		7DCC93E51D26C01E00E0A8F5 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +42,8 @@
 		7DCC93C31D26BEAF00E0A8F5 = {
 			isa = PBXGroup;
 			children = (
+				7DCC93E51D26C01E00E0A8F5 /* LICENSE */,
+				7DCC93E31D26C00400E0A8F5 /* README.md */,
 				7DCC93CE1D26BEAF00E0A8F5 /* PythonMacros */,
 				7DCC93CD1D26BEAF00E0A8F5 /* Products */,
 			);
@@ -124,6 +130,7 @@
 			files = (
 				7DCC93DA1D26BEAF00E0A8F5 /* LaunchScreen.storyboard in Resources */,
 				7DCC93D71D26BEAF00E0A8F5 /* Assets.xcassets in Resources */,
+				7DCC93E61D26C01E00E0A8F5 /* LICENSE in Resources */,
 				7DCC93D51D26BEAF00E0A8F5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -135,6 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DCC93E41D26C00400E0A8F5 /* README.md in Sources */,
 				7DCC93D21D26BEAF00E0A8F5 /* ActivityViewController.swift in Sources */,
 				7DCC93D01D26BEAF00E0A8F5 /* AppDelegate.swift in Sources */,
 			);
@@ -288,6 +296,7 @@
 				7DCC93E01D26BEAF00E0A8F5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
