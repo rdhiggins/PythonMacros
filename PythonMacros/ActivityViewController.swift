@@ -25,7 +25,9 @@
 
 import UIKit
 
-class ActivityViewController: UIViewController {
+class ActivityViewController: UIViewController, DailyProgressDelegate {
+
+    private let dailyProgress: DailyProgress = DailyProgress.sharedInstance
 
     @IBOutlet weak var outerProgressView: CustomProgressView!
     @IBOutlet weak var middleProgressView: CustomProgressView!
@@ -34,40 +36,52 @@ class ActivityViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        DailyProgress.sharedInstance.delegate = self
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
 
     @IBAction func evenMoreProgress(sender: UIButton) {
-        outerProgressView.progress += CGFloat(10 * drand48())
-        middleProgressView.progress += CGFloat(10 * drand48())
-        innerProgressView.progress += CGFloat(10 * drand48())
+        dailyProgress.activeCalories += 10 * drand48()
+        dailyProgress.activity += 10 * drand48()
+        dailyProgress.standup += 10 * drand48()
     }
     
     
     @IBAction func moreProgress(sender: UIButton) {
-        outerProgressView.progress += CGFloat(drand48())
-        middleProgressView.progress += CGFloat(drand48())
-        innerProgressView.progress += CGFloat(drand48())
+        dailyProgress.activeCalories += drand48()
+        dailyProgress.activity += drand48()
+        dailyProgress.standup += drand48()
     }
     
     
     @IBAction func lessProgress(sender: UIButton) {
-        outerProgressView.progress -= CGFloat(drand48())
-        middleProgressView.progress -= CGFloat(drand48())
-        innerProgressView.progress -= CGFloat(drand48())
+        dailyProgress.activeCalories -= drand48()
+        dailyProgress.activity -= drand48()
+        dailyProgress.standup -= drand48()
     }
 
     
     @IBAction func evenLessProgress(sender: UIButton) {
-        outerProgressView.progress -= CGFloat(10 * drand48())
-        middleProgressView.progress -= CGFloat(10 * drand48())
-        innerProgressView.progress -= CGFloat(10 * drand48())
+        dailyProgress.activeCalories -= 10 * drand48()
+        dailyProgress.activity -= 10 * drand48()
+        dailyProgress.standup -= 10 * drand48()
+    }
+
+
+    func activeCalorieUpdate(newValue: Double) {
+        outerProgressView.progress = CGFloat(newValue)
+    }
+
+
+    func activityUpdate(newValue: Double) {
+        middleProgressView.progress = CGFloat(newValue)
+    }
+
+
+    func standupUpdate(newValue: Double) {
+        innerProgressView.progress = CGFloat(newValue)
     }
 }
 

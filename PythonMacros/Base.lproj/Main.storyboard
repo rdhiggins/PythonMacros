@@ -149,45 +149,45 @@
                                             <constraint firstItem="flK-zT-Ro2" firstAttribute="leading" secondItem="WcT-Cf-qZx" secondAttribute="leading" id="udi-Ll-D7g"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="This is a test of the label layout" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7kt-CJ-O6t">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7kt-CJ-O6t">
                                         <rect key="frame" x="0.0" y="457" width="560" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="qwA-EO-s09" userLabel="Button Pane">
-                                        <rect key="frame" x="0.0" y="478" width="560" height="31"/>
+                                        <rect key="frame" x="0.0" y="478" width="560" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D6U-Qv-fFx">
-                                                <rect key="frame" x="0.0" y="0.0" width="73" height="31"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="73" height="30"/>
                                                 <state key="normal" title="Even More"/>
                                                 <connections>
                                                     <action selector="evenMoreProgress:" destination="gUW-7E-rlr" eventType="touchUpInside" id="ywi-w8-4ac"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xuv-Es-M8F">
-                                                <rect key="frame" x="141" y="0.0" width="36" height="31"/>
+                                                <rect key="frame" x="141" y="0.0" width="36" height="30"/>
                                                 <state key="normal" title="More"/>
                                                 <connections>
                                                     <action selector="moreProgress:" destination="gUW-7E-rlr" eventType="touchUpInside" id="vw3-cV-8sE"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wS5-SM-sdW">
-                                                <rect key="frame" x="266" y="0.0" width="30" height="31"/>
+                                                <rect key="frame" x="266" y="0.0" width="30" height="30"/>
                                                 <state key="normal" title="Edit"/>
                                                 <connections>
                                                     <segue destination="Exe-oU-8Lk" kind="show" id="wVg-pb-weo"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ce-6L-rbb">
-                                                <rect key="frame" x="388" y="0.0" width="32" height="31"/>
+                                                <rect key="frame" x="388" y="0.0" width="32" height="30"/>
                                                 <state key="normal" title="Less"/>
                                                 <connections>
                                                     <action selector="lessProgress:" destination="gUW-7E-rlr" eventType="touchUpInside" id="a6p-UB-ejH"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IcK-ih-fFs">
-                                                <rect key="frame" x="491" y="0.0" width="69" height="31"/>
+                                                <rect key="frame" x="491" y="0.0" width="69" height="30"/>
                                                 <state key="normal" title="Even Less"/>
                                                 <connections>
                                                     <action selector="evenLessProgress:" destination="gUW-7E-rlr" eventType="touchUpInside" id="wi4-46-hfs"/>

@@ -41,6 +41,7 @@
 		7DF39F671D2C4D090099930F /* liblzma.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DF39F661D2C4D090099930F /* liblzma.a */; };
 		7DF39F691D2C4D340099930F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DF39F681D2C4D340099930F /* libz.tbd */; };
 		7DF39F6B1D2C4D4E0099930F /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DF39F6A1D2C4D4E0099930F /* libsqlite3.tbd */; };
+		7DF39F6D1D2C4EBB0099930F /* DailyProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF39F6C1D2C4EBB0099930F /* DailyProgress.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +84,7 @@
 		7DF39F661D2C4D090099930F /* liblzma.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = liblzma.a; sourceTree = "<group>"; };
 		7DF39F681D2C4D340099930F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		7DF39F6A1D2C4D4E0099930F /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		7DF39F6C1D2C4EBB0099930F /* DailyProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyProgress.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +161,7 @@
 				7D7D5D981D2C32C200EDF2E3 /* CodeView */,
 				7D7D5DA51D2C32DE00EDF2E3 /* Keyboard */,
 				7D7D5DA81D2C332B00EDF2E3 /* Utilities */,
+				7DF39F6C1D2C4EBB0099930F /* DailyProgress.swift */,
 				7DCC93CF1D26BEAF00E0A8F5 /* AppDelegate.swift */,
 				7DF39F411D2C376C0099930F /* EditMacroViewController.swift */,
 				7DCC93D11D26BEAF00E0A8F5 /* ActivityViewController.swift */,
@@ -315,6 +318,7 @@
 				7DF39F5C1D2C49C60099930F /* ios.m in Sources */,
 				7D7D5DA21D2C32D500EDF2E3 /* SyntaxHighlightColors.swift in Sources */,
 				7D7D5DA41D2C32D500EDF2E3 /* SyntaxTextStorage.swift in Sources */,
+				7DF39F6D1D2C4EBB0099930F /* DailyProgress.swift in Sources */,
 				7D7D5DAC1D2C334900EDF2E3 /* AssociatedObject.swift in Sources */,
 				7DF39F501D2C499D0099930F /* PythonObject.swift in Sources */,
 				7DF39F511D2C499D0099930F /* PythonScript.swift in Sources */,
