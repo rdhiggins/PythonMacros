@@ -24,6 +24,17 @@
 		7DCC93E61D26C01E00E0A8F5 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 7DCC93E51D26C01E00E0A8F5 /* LICENSE */; };
 		7DCC93E91D26CFBA00E0A8F5 /* CustomProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCC93E81D26CFBA00E0A8F5 /* CustomProgressView.swift */; };
 		7DF39F421D2C376C0099930F /* EditMacroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF39F411D2C376C0099930F /* EditMacroViewController.swift */; };
+		7DF39F4E1D2C499D0099930F /* PythonMacroEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF39F441D2C499D0099930F /* PythonMacroEngine.swift */; };
+		7DF39F4F1D2C499D0099930F /* PythonCaptureOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF39F451D2C499D0099930F /* PythonCaptureOutput.swift */; };
+		7DF39F501D2C499D0099930F /* PythonObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF39F461D2C499D0099930F /* PythonObject.swift */; };
+		7DF39F511D2C499D0099930F /* PythonScript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF39F471D2C499D0099930F /* PythonScript.swift */; };
+		7DF39F521D2C499D0099930F /* PythonErrorMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF39F481D2C499D0099930F /* PythonErrorMonitor.swift */; };
+		7DF39F531D2C499D0099930F /* PythonScriptLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF39F491D2C499D0099930F /* PythonScriptLocation.swift */; };
+		7DF39F541D2C499D0099930F /* PythonScriptDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF39F4A1D2C499D0099930F /* PythonScriptDirectory.swift */; };
+		7DF39F551D2C499D0099930F /* PythonMacro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF39F4B1D2C499D0099930F /* PythonMacro.swift */; };
+		7DF39F561D2C499D0099930F /* PythonFunctionBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF39F4C1D2C499D0099930F /* PythonFunctionBridge.swift */; };
+		7DF39F571D2C499D0099930F /* PythonFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF39F4D1D2C499D0099930F /* PythonFunction.swift */; };
+		7DF39F5C1D2C49C60099930F /* ios.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF39F5A1D2C49C60099930F /* ios.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +58,19 @@
 		7DCC93E51D26C01E00E0A8F5 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		7DCC93E81D26CFBA00E0A8F5 /* CustomProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomProgressView.swift; sourceTree = "<group>"; };
 		7DF39F411D2C376C0099930F /* EditMacroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMacroViewController.swift; sourceTree = "<group>"; };
+		7DF39F441D2C499D0099930F /* PythonMacroEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PythonMacroEngine.swift; sourceTree = "<group>"; };
+		7DF39F451D2C499D0099930F /* PythonCaptureOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PythonCaptureOutput.swift; sourceTree = "<group>"; };
+		7DF39F461D2C499D0099930F /* PythonObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PythonObject.swift; sourceTree = "<group>"; };
+		7DF39F471D2C499D0099930F /* PythonScript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PythonScript.swift; sourceTree = "<group>"; };
+		7DF39F481D2C499D0099930F /* PythonErrorMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PythonErrorMonitor.swift; sourceTree = "<group>"; };
+		7DF39F491D2C499D0099930F /* PythonScriptLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PythonScriptLocation.swift; sourceTree = "<group>"; };
+		7DF39F4A1D2C499D0099930F /* PythonScriptDirectory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PythonScriptDirectory.swift; sourceTree = "<group>"; };
+		7DF39F4B1D2C499D0099930F /* PythonMacro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PythonMacro.swift; sourceTree = "<group>"; };
+		7DF39F4C1D2C499D0099930F /* PythonFunctionBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PythonFunctionBridge.swift; sourceTree = "<group>"; };
+		7DF39F4D1D2C499D0099930F /* PythonFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PythonFunction.swift; sourceTree = "<group>"; };
+		7DF39F591D2C49C60099930F /* PythonMacros-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PythonMacros-Bridging-Header.h"; sourceTree = "<group>"; };
+		7DF39F5A1D2C49C60099930F /* ios.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ios.m; sourceTree = "<group>"; };
+		7DF39F5B1D2C49C60099930F /* ios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ios.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +135,7 @@
 		7DCC93CE1D26BEAF00E0A8F5 /* PythonMacros */ = {
 			isa = PBXGroup;
 			children = (
+				7DF39F431D2C49730099930F /* PythonMacroEngine */,
 				7DCC93E71D26CF6900E0A8F5 /* Activity Control */,
 				7D7D5D981D2C32C200EDF2E3 /* CodeView */,
 				7D7D5DA51D2C32DE00EDF2E3 /* Keyboard */,
@@ -132,6 +157,34 @@
 				7DCC93E81D26CFBA00E0A8F5 /* CustomProgressView.swift */,
 			);
 			name = "Activity Control";
+			sourceTree = "<group>";
+		};
+		7DF39F431D2C49730099930F /* PythonMacroEngine */ = {
+			isa = PBXGroup;
+			children = (
+				7DF39F581D2C49AC0099930F /* C Module */,
+				7DF39F441D2C499D0099930F /* PythonMacroEngine.swift */,
+				7DF39F451D2C499D0099930F /* PythonCaptureOutput.swift */,
+				7DF39F461D2C499D0099930F /* PythonObject.swift */,
+				7DF39F471D2C499D0099930F /* PythonScript.swift */,
+				7DF39F481D2C499D0099930F /* PythonErrorMonitor.swift */,
+				7DF39F491D2C499D0099930F /* PythonScriptLocation.swift */,
+				7DF39F4A1D2C499D0099930F /* PythonScriptDirectory.swift */,
+				7DF39F4B1D2C499D0099930F /* PythonMacro.swift */,
+				7DF39F4C1D2C499D0099930F /* PythonFunctionBridge.swift */,
+				7DF39F4D1D2C499D0099930F /* PythonFunction.swift */,
+			);
+			name = PythonMacroEngine;
+			sourceTree = "<group>";
+		};
+		7DF39F581D2C49AC0099930F /* C Module */ = {
+			isa = PBXGroup;
+			children = (
+				7DF39F5A1D2C49C60099930F /* ios.m */,
+				7DF39F5B1D2C49C60099930F /* ios.h */,
+				7DF39F591D2C49C60099930F /* PythonMacros-Bridging-Header.h */,
+			);
+			name = "C Module";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,14 +262,25 @@
 				7D7D5DA11D2C32D500EDF2E3 /* LineNumberLayoutManager.swift in Sources */,
 				7DCC93D21D26BEAF00E0A8F5 /* ActivityViewController.swift in Sources */,
 				7DF39F421D2C376C0099930F /* EditMacroViewController.swift in Sources */,
+				7DF39F5C1D2C49C60099930F /* ios.m in Sources */,
 				7D7D5DA21D2C32D500EDF2E3 /* SyntaxHighlightColors.swift in Sources */,
 				7D7D5DA41D2C32D500EDF2E3 /* SyntaxTextStorage.swift in Sources */,
 				7D7D5DAC1D2C334900EDF2E3 /* AssociatedObject.swift in Sources */,
+				7DF39F501D2C499D0099930F /* PythonObject.swift in Sources */,
+				7DF39F511D2C499D0099930F /* PythonScript.swift in Sources */,
 				7DCC93E91D26CFBA00E0A8F5 /* CustomProgressView.swift in Sources */,
 				7D7D5DAB1D2C334900EDF2E3 /* UIAlertController+Window.swift in Sources */,
+				7DF39F541D2C499D0099930F /* PythonScriptDirectory.swift in Sources */,
+				7DF39F4E1D2C499D0099930F /* PythonMacroEngine.swift in Sources */,
 				7D7D5DA01D2C32D500EDF2E3 /* LineNumberTextView.swift in Sources */,
+				7DF39F4F1D2C499D0099930F /* PythonCaptureOutput.swift in Sources */,
+				7DF39F561D2C499D0099930F /* PythonFunctionBridge.swift in Sources */,
+				7DF39F551D2C499D0099930F /* PythonMacro.swift in Sources */,
+				7DF39F531D2C499D0099930F /* PythonScriptLocation.swift in Sources */,
 				7D7D5DA31D2C32D500EDF2E3 /* BaseTextStorage.swift in Sources */,
+				7DF39F571D2C499D0099930F /* PythonFunction.swift in Sources */,
 				7D7D5DA71D2C32F300EDF2E3 /* KeyboardSpacingView.swift in Sources */,
+				7DF39F521D2C499D0099930F /* PythonErrorMonitor.swift in Sources */,
 				7DCC93D01D26BEAF00E0A8F5 /* AppDelegate.swift in Sources */,
 				7D7D5D9F1D2C32D500EDF2E3 /* CodeView.swift in Sources */,
 			);
@@ -333,10 +397,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = PythonMacros/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.spazsoft.ios.tutorials.PythonMacros;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PythonMacros/PythonMacros-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -344,10 +411,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = PythonMacros/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.spazsoft.ios.tutorials.PythonMacros;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PythonMacros/PythonMacros-Bridging-Header.h";
 			};
 			name = Release;
 		};
