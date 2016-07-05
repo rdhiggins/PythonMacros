@@ -35,6 +35,12 @@
 		7DF39F561D2C499D0099930F /* PythonFunctionBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF39F4C1D2C499D0099930F /* PythonFunctionBridge.swift */; };
 		7DF39F571D2C499D0099930F /* PythonFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF39F4D1D2C499D0099930F /* PythonFunction.swift */; };
 		7DF39F5C1D2C49C60099930F /* ios.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF39F5A1D2C49C60099930F /* ios.m */; };
+		7DF39F621D2C4CDB0099930F /* OpenSSL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DF39F601D2C4CDB0099930F /* OpenSSL.framework */; };
+		7DF39F631D2C4CDB0099930F /* Python.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DF39F611D2C4CDB0099930F /* Python.framework */; };
+		7DF39F651D2C4CF50099930F /* libbz2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DF39F641D2C4CF50099930F /* libbz2.a */; };
+		7DF39F671D2C4D090099930F /* liblzma.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DF39F661D2C4D090099930F /* liblzma.a */; };
+		7DF39F691D2C4D340099930F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DF39F681D2C4D340099930F /* libz.tbd */; };
+		7DF39F6B1D2C4D4E0099930F /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DF39F6A1D2C4D4E0099930F /* libsqlite3.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +77,12 @@
 		7DF39F591D2C49C60099930F /* PythonMacros-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PythonMacros-Bridging-Header.h"; sourceTree = "<group>"; };
 		7DF39F5A1D2C49C60099930F /* ios.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ios.m; sourceTree = "<group>"; };
 		7DF39F5B1D2C49C60099930F /* ios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ios.h; sourceTree = "<group>"; };
+		7DF39F601D2C4CDB0099930F /* OpenSSL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OpenSSL.framework; sourceTree = "<group>"; };
+		7DF39F611D2C4CDB0099930F /* Python.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Python.framework; sourceTree = "<group>"; };
+		7DF39F641D2C4CF50099930F /* libbz2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libbz2.a; sourceTree = "<group>"; };
+		7DF39F661D2C4D090099930F /* liblzma.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = liblzma.a; sourceTree = "<group>"; };
+		7DF39F681D2C4D340099930F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		7DF39F6A1D2C4D4E0099930F /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +90,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DF39F631D2C4CDB0099930F /* Python.framework in Frameworks */,
+				7DF39F621D2C4CDB0099930F /* OpenSSL.framework in Frameworks */,
+				7DF39F6B1D2C4D4E0099930F /* libsqlite3.tbd in Frameworks */,
+				7DF39F691D2C4D340099930F /* libz.tbd in Frameworks */,
+				7DF39F651D2C4CF50099930F /* libbz2.a in Frameworks */,
+				7DF39F671D2C4D090099930F /* liblzma.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +139,7 @@
 				7DCC93E31D26C00400E0A8F5 /* README.md */,
 				7DCC93CE1D26BEAF00E0A8F5 /* PythonMacros */,
 				7DCC93CD1D26BEAF00E0A8F5 /* Products */,
+				7DF39F5F1D2C4CB60099930F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -187,6 +206,19 @@
 			name = "C Module";
 			sourceTree = "<group>";
 		};
+		7DF39F5F1D2C4CB60099930F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7DF39F6A1D2C4D4E0099930F /* libsqlite3.tbd */,
+				7DF39F681D2C4D340099930F /* libz.tbd */,
+				7DF39F661D2C4D090099930F /* liblzma.a */,
+				7DF39F641D2C4CF50099930F /* libbz2.a */,
+				7DF39F601D2C4CDB0099930F /* OpenSSL.framework */,
+				7DF39F611D2C4CDB0099930F /* Python.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -194,6 +226,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7DCC93DE1D26BEAF00E0A8F5 /* Build configuration list for PBXNativeTarget "PythonMacros" */;
 			buildPhases = (
+				7DF39F5E1D2C4C0F0099930F /* Refresh Python Scripts */,
 				7DCC93C81D26BEAF00E0A8F5 /* Sources */,
 				7DCC93C91D26BEAF00E0A8F5 /* Frameworks */,
 				7DCC93CA1D26BEAF00E0A8F5 /* Resources */,
@@ -253,6 +286,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7DF39F5E1D2C4C0F0099930F /* Refresh Python Scripts */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Refresh Python Scripts";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "mkdir -p \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/Library/Python.framework/Resources\"\nmkdir -p \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/Library/Application Support/com.spazsoft.ios.tutorials.PythonMacros\"\nrsync -pvtrL --exclude .hg --exclude .svn --exclude .git \"$PROJECT_DIR/Python.framework/Resources/lib\" \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/Library/Python.framework/Resources\"\nrsync -pvtrL --exclude .hg --exclude .svn --exclude .git \"$PROJECT_DIR/Python.framework/Resources/include\" \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/Library/Python.framework/Resources\"\nrsync -pvtrL --exclude .hg --exclude .svn --exclude .git \"$PROJECT_DIR/app\" \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/Library/Application Support/com.spazsoft.ios.tutorials.PythonMacros\"\nmkdir -p \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/Library/Python.framework/Resources/lib/python`readlink $PROJECT_DIR/Python.framework/Versions/Current`/site-packages/\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7DCC93C81D26BEAF00E0A8F5 /* Sources */ = {
@@ -398,8 +448,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = PythonMacros/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.spazsoft.ios.tutorials.PythonMacros;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "PythonMacros/PythonMacros-Bridging-Header.h";
@@ -412,8 +470,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = PythonMacros/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.spazsoft.ios.tutorials.PythonMacros;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "PythonMacros/PythonMacros-Bridging-Header.h";
