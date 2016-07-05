@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D7D5D9F1D2C32D500EDF2E3 /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D5D991D2C32D500EDF2E3 /* CodeView.swift */; };
+		7D7D5DA01D2C32D500EDF2E3 /* LineNumberTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D5D9A1D2C32D500EDF2E3 /* LineNumberTextView.swift */; };
+		7D7D5DA11D2C32D500EDF2E3 /* LineNumberLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D5D9B1D2C32D500EDF2E3 /* LineNumberLayoutManager.swift */; };
+		7D7D5DA21D2C32D500EDF2E3 /* SyntaxHighlightColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D5D9C1D2C32D500EDF2E3 /* SyntaxHighlightColors.swift */; };
+		7D7D5DA31D2C32D500EDF2E3 /* BaseTextStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D5D9D1D2C32D500EDF2E3 /* BaseTextStorage.swift */; };
+		7D7D5DA41D2C32D500EDF2E3 /* SyntaxTextStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D5D9E1D2C32D500EDF2E3 /* SyntaxTextStorage.swift */; };
+		7D7D5DA71D2C32F300EDF2E3 /* KeyboardSpacingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D5DA61D2C32F300EDF2E3 /* KeyboardSpacingView.swift */; };
+		7D7D5DAB1D2C334900EDF2E3 /* UIAlertController+Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D5DA91D2C334900EDF2E3 /* UIAlertController+Window.swift */; };
+		7D7D5DAC1D2C334900EDF2E3 /* AssociatedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D5DAA1D2C334900EDF2E3 /* AssociatedObject.swift */; };
 		7DCC93D01D26BEAF00E0A8F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCC93CF1D26BEAF00E0A8F5 /* AppDelegate.swift */; };
 		7DCC93D21D26BEAF00E0A8F5 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCC93D11D26BEAF00E0A8F5 /* ActivityViewController.swift */; };
 		7DCC93D51D26BEAF00E0A8F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DCC93D31D26BEAF00E0A8F5 /* Main.storyboard */; };
@@ -14,9 +23,19 @@
 		7DCC93DA1D26BEAF00E0A8F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DCC93D81D26BEAF00E0A8F5 /* LaunchScreen.storyboard */; };
 		7DCC93E61D26C01E00E0A8F5 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 7DCC93E51D26C01E00E0A8F5 /* LICENSE */; };
 		7DCC93E91D26CFBA00E0A8F5 /* CustomProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCC93E81D26CFBA00E0A8F5 /* CustomProgressView.swift */; };
+		7DF39F421D2C376C0099930F /* EditMacroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF39F411D2C376C0099930F /* EditMacroViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7D7D5D991D2C32D500EDF2E3 /* CodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
+		7D7D5D9A1D2C32D500EDF2E3 /* LineNumberTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineNumberTextView.swift; sourceTree = "<group>"; };
+		7D7D5D9B1D2C32D500EDF2E3 /* LineNumberLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineNumberLayoutManager.swift; sourceTree = "<group>"; };
+		7D7D5D9C1D2C32D500EDF2E3 /* SyntaxHighlightColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyntaxHighlightColors.swift; sourceTree = "<group>"; };
+		7D7D5D9D1D2C32D500EDF2E3 /* BaseTextStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTextStorage.swift; sourceTree = "<group>"; };
+		7D7D5D9E1D2C32D500EDF2E3 /* SyntaxTextStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyntaxTextStorage.swift; sourceTree = "<group>"; };
+		7D7D5DA61D2C32F300EDF2E3 /* KeyboardSpacingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardSpacingView.swift; sourceTree = "<group>"; };
+		7D7D5DA91D2C334900EDF2E3 /* UIAlertController+Window.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Window.swift"; sourceTree = "<group>"; };
+		7D7D5DAA1D2C334900EDF2E3 /* AssociatedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssociatedObject.swift; sourceTree = "<group>"; };
 		7DCC93CC1D26BEAF00E0A8F5 /* PythonMacros.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PythonMacros.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DCC93CF1D26BEAF00E0A8F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7DCC93D11D26BEAF00E0A8F5 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
@@ -27,6 +46,7 @@
 		7DCC93E31D26C00400E0A8F5 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		7DCC93E51D26C01E00E0A8F5 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		7DCC93E81D26CFBA00E0A8F5 /* CustomProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomProgressView.swift; sourceTree = "<group>"; };
+		7DF39F411D2C376C0099930F /* EditMacroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMacroViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +60,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7D7D5D981D2C32C200EDF2E3 /* CodeView */ = {
+			isa = PBXGroup;
+			children = (
+				7D7D5D991D2C32D500EDF2E3 /* CodeView.swift */,
+				7D7D5D9A1D2C32D500EDF2E3 /* LineNumberTextView.swift */,
+				7D7D5D9B1D2C32D500EDF2E3 /* LineNumberLayoutManager.swift */,
+				7D7D5D9C1D2C32D500EDF2E3 /* SyntaxHighlightColors.swift */,
+				7D7D5D9D1D2C32D500EDF2E3 /* BaseTextStorage.swift */,
+				7D7D5D9E1D2C32D500EDF2E3 /* SyntaxTextStorage.swift */,
+			);
+			name = CodeView;
+			sourceTree = "<group>";
+		};
+		7D7D5DA51D2C32DE00EDF2E3 /* Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				7D7D5DA61D2C32F300EDF2E3 /* KeyboardSpacingView.swift */,
+			);
+			name = Keyboard;
+			sourceTree = "<group>";
+		};
+		7D7D5DA81D2C332B00EDF2E3 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				7D7D5DA91D2C334900EDF2E3 /* UIAlertController+Window.swift */,
+				7D7D5DAA1D2C334900EDF2E3 /* AssociatedObject.swift */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 		7DCC93C31D26BEAF00E0A8F5 = {
 			isa = PBXGroup;
 			children = (
@@ -62,7 +112,11 @@
 			isa = PBXGroup;
 			children = (
 				7DCC93E71D26CF6900E0A8F5 /* Activity Control */,
+				7D7D5D981D2C32C200EDF2E3 /* CodeView */,
+				7D7D5DA51D2C32DE00EDF2E3 /* Keyboard */,
+				7D7D5DA81D2C332B00EDF2E3 /* Utilities */,
 				7DCC93CF1D26BEAF00E0A8F5 /* AppDelegate.swift */,
+				7DF39F411D2C376C0099930F /* EditMacroViewController.swift */,
 				7DCC93D11D26BEAF00E0A8F5 /* ActivityViewController.swift */,
 				7DCC93D31D26BEAF00E0A8F5 /* Main.storyboard */,
 				7DCC93D61D26BEAF00E0A8F5 /* Assets.xcassets */,
@@ -152,9 +206,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D7D5DA11D2C32D500EDF2E3 /* LineNumberLayoutManager.swift in Sources */,
 				7DCC93D21D26BEAF00E0A8F5 /* ActivityViewController.swift in Sources */,
+				7DF39F421D2C376C0099930F /* EditMacroViewController.swift in Sources */,
+				7D7D5DA21D2C32D500EDF2E3 /* SyntaxHighlightColors.swift in Sources */,
+				7D7D5DA41D2C32D500EDF2E3 /* SyntaxTextStorage.swift in Sources */,
+				7D7D5DAC1D2C334900EDF2E3 /* AssociatedObject.swift in Sources */,
 				7DCC93E91D26CFBA00E0A8F5 /* CustomProgressView.swift in Sources */,
+				7D7D5DAB1D2C334900EDF2E3 /* UIAlertController+Window.swift in Sources */,
+				7D7D5DA01D2C32D500EDF2E3 /* LineNumberTextView.swift in Sources */,
+				7D7D5DA31D2C32D500EDF2E3 /* BaseTextStorage.swift in Sources */,
+				7D7D5DA71D2C32F300EDF2E3 /* KeyboardSpacingView.swift in Sources */,
 				7DCC93D01D26BEAF00E0A8F5 /* AppDelegate.swift in Sources */,
+				7D7D5D9F1D2C32D500EDF2E3 /* CodeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

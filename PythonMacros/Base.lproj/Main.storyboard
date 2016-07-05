@@ -37,10 +37,10 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="f3E-Hz-OGC">
                                 <rect key="frame" x="20" y="72" width="560" height="508"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WcT-Cf-qZx" userLabel="Activities View">
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WcT-Cf-qZx" userLabel="Activities View">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="457"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="flK-zT-Ro2" userLabel="Outer Progress View" customClass="CustomProgressView" customModule="PythonMacros" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="flK-zT-Ro2" userLabel="Outer Progress View" customClass="CustomProgressView" customModule="PythonMacros" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="560" height="457"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="numberRotations">
@@ -69,7 +69,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8nc-TQ-Ccq" userLabel="Middle Progress View" customClass="CustomProgressView" customModule="PythonMacros" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8nc-TQ-Ccq" userLabel="Middle Progress View" customClass="CustomProgressView" customModule="PythonMacros" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="560" height="457"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="numberRotations">
@@ -101,7 +101,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nks-Ti-tn2" userLabel="Inner Progress View" customClass="CustomProgressView" customModule="PythonMacros" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nks-Ti-tn2" userLabel="Inner Progress View" customClass="CustomProgressView" customModule="PythonMacros" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="560" height="457"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="numberRotations">
@@ -149,42 +149,45 @@
                                             <constraint firstItem="flK-zT-Ro2" firstAttribute="leading" secondItem="WcT-Cf-qZx" secondAttribute="leading" id="udi-Ll-D7g"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a test of the label layout" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7kt-CJ-O6t">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="This is a test of the label layout" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7kt-CJ-O6t">
                                         <rect key="frame" x="0.0" y="457" width="560" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="qwA-EO-s09" userLabel="Button Pane">
-                                        <rect key="frame" x="0.0" y="478" width="560" height="30"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="qwA-EO-s09" userLabel="Button Pane">
+                                        <rect key="frame" x="0.0" y="478" width="560" height="31"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D6U-Qv-fFx">
-                                                <rect key="frame" x="0.0" y="0.0" width="73" height="30"/>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D6U-Qv-fFx">
+                                                <rect key="frame" x="0.0" y="0.0" width="73" height="31"/>
                                                 <state key="normal" title="Even More"/>
                                                 <connections>
                                                     <action selector="evenMoreProgress:" destination="gUW-7E-rlr" eventType="touchUpInside" id="ywi-w8-4ac"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xuv-Es-M8F">
-                                                <rect key="frame" x="141" y="0.0" width="36" height="30"/>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xuv-Es-M8F">
+                                                <rect key="frame" x="141" y="0.0" width="36" height="31"/>
                                                 <state key="normal" title="More"/>
                                                 <connections>
                                                     <action selector="moreProgress:" destination="gUW-7E-rlr" eventType="touchUpInside" id="vw3-cV-8sE"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wS5-SM-sdW">
-                                                <rect key="frame" x="266" y="0.0" width="30" height="30"/>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wS5-SM-sdW">
+                                                <rect key="frame" x="266" y="0.0" width="30" height="31"/>
                                                 <state key="normal" title="Edit"/>
+                                                <connections>
+                                                    <segue destination="Exe-oU-8Lk" kind="show" id="wVg-pb-weo"/>
+                                                </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ce-6L-rbb">
-                                                <rect key="frame" x="387" y="0.0" width="32" height="30"/>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ce-6L-rbb">
+                                                <rect key="frame" x="388" y="0.0" width="32" height="31"/>
                                                 <state key="normal" title="Less"/>
                                                 <connections>
                                                     <action selector="lessProgress:" destination="gUW-7E-rlr" eventType="touchUpInside" id="a6p-UB-ejH"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IcK-ih-fFs">
-                                                <rect key="frame" x="491" y="0.0" width="69" height="30"/>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IcK-ih-fFs">
+                                                <rect key="frame" x="491" y="0.0" width="69" height="31"/>
                                                 <state key="normal" title="Even Less"/>
                                                 <connections>
                                                     <action selector="evenLessProgress:" destination="gUW-7E-rlr" eventType="touchUpInside" id="wi4-46-hfs"/>
@@ -213,6 +216,65 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nSY-KC-6d1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="673" y="426"/>
+        </scene>
+        <!--Edit Macro View Controller-->
+        <scene sceneID="zFY-2n-uLh">
+            <objects>
+                <viewController id="Exe-oU-8Lk" customClass="EditMacroViewController" customModule="PythonMacros" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dKc-1t-57c"/>
+                        <viewControllerLayoutGuide type="bottom" id="OEP-tt-DyC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="G31-gx-UCb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="i9v-28-rim">
+                                <rect key="frame" x="143" y="72" width="315" height="29"/>
+                                <segments>
+                                    <segment title="Even More"/>
+                                    <segment title="More"/>
+                                    <segment title="Less"/>
+                                    <segment title="Even Less"/>
+                                </segments>
+                            </segmentedControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oad-NA-NT3" userLabel="Code View" customClass="CodeView" customModule="PythonMacros" customModuleProvider="target">
+                                <rect key="frame" x="20" y="108" width="560" height="464"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="gutterWidth">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vvE-C8-VMM" userLabel="Keyboard Spacer">
+                                <rect key="frame" x="20" y="580" width="560" height="0.0"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" placeholder="YES" id="rZc-i5-xhz"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.01" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="i9v-28-rim" firstAttribute="centerX" secondItem="G31-gx-UCb" secondAttribute="centerX" id="3Bu-tP-OtA"/>
+                            <constraint firstItem="oad-NA-NT3" firstAttribute="top" secondItem="i9v-28-rim" secondAttribute="bottom" constant="8" id="GHd-ll-sgx"/>
+                            <constraint firstItem="vvE-C8-VMM" firstAttribute="trailing" secondItem="G31-gx-UCb" secondAttribute="trailingMargin" id="HjF-NS-JHu"/>
+                            <constraint firstItem="vvE-C8-VMM" firstAttribute="top" secondItem="oad-NA-NT3" secondAttribute="bottom" constant="8" id="M4F-ro-mHs"/>
+                            <constraint firstItem="vvE-C8-VMM" firstAttribute="leading" secondItem="G31-gx-UCb" secondAttribute="leadingMargin" id="Rxf-pp-gNH"/>
+                            <constraint firstItem="OEP-tt-DyC" firstAttribute="top" secondItem="vvE-C8-VMM" secondAttribute="bottom" constant="20" id="Vu3-L3-mji"/>
+                            <constraint firstItem="i9v-28-rim" firstAttribute="top" secondItem="dKc-1t-57c" secondAttribute="bottom" constant="8" id="Y6a-3W-ZaF"/>
+                            <constraint firstItem="oad-NA-NT3" firstAttribute="trailing" secondItem="G31-gx-UCb" secondAttribute="trailingMargin" id="abq-Ck-168"/>
+                            <constraint firstItem="oad-NA-NT3" firstAttribute="leading" secondItem="G31-gx-UCb" secondAttribute="leadingMargin" id="daa-rB-EpO"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="codeView" destination="oad-NA-NT3" id="WOb-sE-eln"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P7m-6E-brL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1456" y="426"/>
         </scene>
     </scenes>
 </document>
