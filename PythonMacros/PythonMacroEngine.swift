@@ -110,6 +110,7 @@ class PythonMacroEngine {
         let wpythonPath = _Py_char2wchar(newPath, nil)
         PySys_SetPath(wpythonPath)
     }
+
     
     private func setupMain() {
         let module = PyImport_AddModule("__main__")
@@ -120,13 +121,6 @@ class PythonMacroEngine {
     
     private func setupFunctionBridge() {
         callable = PythonFunctionBridge(engine: self)
-        
-        // Test Bridge
-        let f = PythonFunction(name: "Hello", callArgs: [.String, .Float, .Float], returnType: .Float) { args -> AnyObject? in
-            print(args)
-            return 2.2
-        }
-        callable?.registerFunction(f)
     }
 }
 
