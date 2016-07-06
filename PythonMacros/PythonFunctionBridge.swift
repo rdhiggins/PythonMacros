@@ -108,7 +108,11 @@ class PythonFunctionBridge {
         }
         
         var def: String = "def \(function.name)(\(a.joinWithSeparator(", ")))"
-        var body: String = "ios.call('\(function.name)', (\(argNames.joinWithSeparator(", "))))\n"
+        var body: String = "ios.call('\(function.name)', ("
+        for an in argNames {
+            body += "\(an), "
+        }
+        body += "))\n"
         
         if retType != nil {
             def += " -> \(retType!):\n"

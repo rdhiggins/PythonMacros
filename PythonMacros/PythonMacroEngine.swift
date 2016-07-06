@@ -70,7 +70,11 @@ class PythonMacroEngine {
     
     func run(script: String) {
         PyRun_SimpleStringFlags(script, nil)
-     
+
+        checkEngineStatus()
+    }
+    
+    func checkEngineStatus() {
         output?.refreshOutput()
         error?.checkError()
     }

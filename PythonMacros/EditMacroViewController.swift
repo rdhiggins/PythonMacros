@@ -11,12 +11,19 @@ import UIKit
 class EditMacroViewController: UIViewController {
 
     @IBOutlet weak var codeView: CodeView!
+    @IBOutlet weak var macroSelector: UISegmentedControl!
+    
+    var macros: [PythonMacro] = []
+    var selectedMacroIndex: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         setupCodeView()
+
+        selectedMacroIndex = 0
+        codeView.text = macros[selectedMacroIndex].script?.python
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,14 +40,20 @@ class EditMacroViewController: UIViewController {
         self.codeView.gutterTextColor = SyntaxHighlightThemes.Default.gutterText
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    @IBAction func macroSelectionChanged(sender: AnyObject) {
+        selectMacro(macroSelector.selectedSegmentIndex)
     }
-    */
-
+    
+    
+    func selectMacro(index: Int) {
+        if index != selectedMacroIndex {
+            macros[selectedMacroIndex].script?.python = codeView.text
+            macros[selectedMacroIndex].registerMacro()
+            PythonMacroEngine.sharedInstance.checkEngineStatus()
+            
+            codeView.text = macros[index].script?.python
+            selectedMacroIndex = index
+        }
+    }
 }

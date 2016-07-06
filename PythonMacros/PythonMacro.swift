@@ -47,6 +47,9 @@ class PythonMacro {
         object = PythonMacroEngine.sharedInstance.lookupObject(name)
     }
     
+    func registerMacro() {
+        setupMacro()
+    }
     
     private func buildArgumentsString(args: [CVarArgType]) -> String {
         var ret = "("
@@ -79,6 +82,7 @@ class PythonMacro {
             Py_DecRef(a)
         }
         
+        PythonMacroEngine.sharedInstance.checkEngineStatus()
         return PythonObject(object: rv)
     }
 

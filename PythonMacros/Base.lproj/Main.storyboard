@@ -176,7 +176,7 @@
                                                 <rect key="frame" x="266" y="0.0" width="30" height="30"/>
                                                 <state key="normal" title="Edit"/>
                                                 <connections>
-                                                    <segue destination="Exe-oU-8Lk" kind="show" id="wVg-pb-weo"/>
+                                                    <segue destination="Exe-oU-8Lk" kind="show" identifier="EditMacros" id="wVg-pb-weo"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ce-6L-rbb">
@@ -238,6 +238,9 @@
                                     <segment title="Less"/>
                                     <segment title="Even Less"/>
                                 </segments>
+                                <connections>
+                                    <action selector="macroSelectionChanged:" destination="Exe-oU-8Lk" eventType="valueChanged" id="tC5-iU-lfn"/>
+                                </connections>
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oad-NA-NT3" userLabel="Code View" customClass="CodeView" customModule="PythonMacros" customModuleProvider="target">
                                 <rect key="frame" x="20" y="108" width="560" height="464"/>
@@ -271,6 +274,7 @@
                     </view>
                     <connections>
                         <outlet property="codeView" destination="oad-NA-NT3" id="WOb-sE-eln"/>
+                        <outlet property="macroSelector" destination="i9v-28-rim" id="lFk-ml-F08"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P7m-6E-brL" userLabel="First Responder" sceneMemberID="firstResponder"/>

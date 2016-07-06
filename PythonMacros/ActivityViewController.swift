@@ -53,42 +53,34 @@ class ActivityViewController: UIViewController, DailyProgressDelegate {
         macros.append(PythonMacro(filename: "even_less", functionName: "evenLess"))
     }
 
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "EditMacros" {
+            if let emvc = segue.destinationViewController as? EditMacroViewController {
+                emvc.macros = macros
+            }
+        }
+    }
 
     @IBAction func evenMoreProgress(sender: UIButton) {
-        dailyProgress.activeCalories += 10 * drand48()
-        dailyProgress.activity += 10 * drand48()
-        dailyProgress.standup += 10 * drand48()
-        
         let r: String? = macros[0].call()
         messageLabel.text = r
     }
     
     
     @IBAction func moreProgress(sender: UIButton) {
-        dailyProgress.activeCalories += drand48()
-        dailyProgress.activity += drand48()
-        dailyProgress.standup += drand48()
-
         let r: String? = macros[1].call()
         messageLabel.text = r
     }
     
     
     @IBAction func lessProgress(sender: UIButton) {
-        dailyProgress.activeCalories -= drand48()
-        dailyProgress.activity -= drand48()
-        dailyProgress.standup -= drand48()
-
         let r: String? = macros[2].call()
         messageLabel.text = r
     }
 
     
     @IBAction func evenLessProgress(sender: UIButton) {
-        dailyProgress.activeCalories -= 10 * drand48()
-        dailyProgress.activity -= 10 * drand48()
-        dailyProgress.standup -= 10 * drand48()
-        
         let r: String? = macros[3].call()
         messageLabel.text = r
     }
