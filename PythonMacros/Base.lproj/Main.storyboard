@@ -180,7 +180,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ce-6L-rbb">
-                                                <rect key="frame" x="387.5" y="0.0" width="32" height="30"/>
+                                                <rect key="frame" x="387" y="0.0" width="32" height="30"/>
                                                 <state key="normal" title="Less"/>
                                                 <connections>
                                                     <action selector="lessProgress:" destination="gUW-7E-rlr" eventType="touchUpInside" id="a6p-UB-ejH"/>
@@ -209,6 +209,7 @@
                     <navigationItem key="navigationItem" title="Activity Progress" id="VdA-JV-uCs"/>
                     <connections>
                         <outlet property="innerProgressView" destination="nks-Ti-tn2" id="mPe-5x-2Im"/>
+                        <outlet property="messageLabel" destination="7kt-CJ-O6t" id="Wlj-FC-NkI"/>
                         <outlet property="middleProgressView" destination="8nc-TQ-Ccq" id="W0V-04-bny"/>
                         <outlet property="outerProgressView" destination="flK-zT-Ro2" id="9zb-Ju-Vab"/>
                     </connections>

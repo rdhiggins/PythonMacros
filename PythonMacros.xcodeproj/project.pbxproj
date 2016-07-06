@@ -23,6 +23,11 @@
 		7DCC93DA1D26BEAF00E0A8F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DCC93D81D26BEAF00E0A8F5 /* LaunchScreen.storyboard */; };
 		7DCC93E61D26C01E00E0A8F5 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 7DCC93E51D26C01E00E0A8F5 /* LICENSE */; };
 		7DCC93E91D26CFBA00E0A8F5 /* CustomProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCC93E81D26CFBA00E0A8F5 /* CustomProgressView.swift */; };
+		7DD754541D2D548C00A1411B /* even_more.py in Resources */ = {isa = PBXBuildFile; fileRef = 7DD754531D2D548C00A1411B /* even_more.py */; };
+		7DD754561D2D57B300A1411B /* capture_output.py in Resources */ = {isa = PBXBuildFile; fileRef = 7DD754551D2D57B300A1411B /* capture_output.py */; };
+		7DD754581D2D57E100A1411B /* more.py in Resources */ = {isa = PBXBuildFile; fileRef = 7DD754571D2D57E100A1411B /* more.py */; };
+		7DD7545A1D2D580100A1411B /* less.py in Resources */ = {isa = PBXBuildFile; fileRef = 7DD754591D2D580100A1411B /* less.py */; };
+		7DD7545C1D2D581D00A1411B /* even_less.py in Resources */ = {isa = PBXBuildFile; fileRef = 7DD7545B1D2D581D00A1411B /* even_less.py */; };
 		7DF39F421D2C376C0099930F /* EditMacroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF39F411D2C376C0099930F /* EditMacroViewController.swift */; };
 		7DF39F4E1D2C499D0099930F /* PythonMacroEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF39F441D2C499D0099930F /* PythonMacroEngine.swift */; };
 		7DF39F4F1D2C499D0099930F /* PythonCaptureOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF39F451D2C499D0099930F /* PythonCaptureOutput.swift */; };
@@ -64,6 +69,11 @@
 		7DCC93E31D26C00400E0A8F5 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		7DCC93E51D26C01E00E0A8F5 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		7DCC93E81D26CFBA00E0A8F5 /* CustomProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomProgressView.swift; sourceTree = "<group>"; };
+		7DD754531D2D548C00A1411B /* even_more.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = even_more.py; sourceTree = "<group>"; };
+		7DD754551D2D57B300A1411B /* capture_output.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = capture_output.py; sourceTree = "<group>"; };
+		7DD754571D2D57E100A1411B /* more.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = more.py; sourceTree = "<group>"; };
+		7DD754591D2D580100A1411B /* less.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = less.py; sourceTree = "<group>"; };
+		7DD7545B1D2D581D00A1411B /* even_less.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = even_less.py; sourceTree = "<group>"; };
 		7DF39F411D2C376C0099930F /* EditMacroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMacroViewController.swift; sourceTree = "<group>"; };
 		7DF39F441D2C499D0099930F /* PythonMacroEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PythonMacroEngine.swift; sourceTree = "<group>"; };
 		7DF39F451D2C499D0099930F /* PythonCaptureOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PythonCaptureOutput.swift; sourceTree = "<group>"; };
@@ -156,6 +166,7 @@
 		7DCC93CE1D26BEAF00E0A8F5 /* PythonMacros */ = {
 			isa = PBXGroup;
 			children = (
+				7DD754521D2D542800A1411B /* PythonScripts */,
 				7DF39F431D2C49730099930F /* PythonMacroEngine */,
 				7DCC93E71D26CF6900E0A8F5 /* Activity Control */,
 				7D7D5D981D2C32C200EDF2E3 /* CodeView */,
@@ -179,6 +190,18 @@
 				7DCC93E81D26CFBA00E0A8F5 /* CustomProgressView.swift */,
 			);
 			name = "Activity Control";
+			sourceTree = "<group>";
+		};
+		7DD754521D2D542800A1411B /* PythonScripts */ = {
+			isa = PBXGroup;
+			children = (
+				7DD754551D2D57B300A1411B /* capture_output.py */,
+				7DD754531D2D548C00A1411B /* even_more.py */,
+				7DD754571D2D57E100A1411B /* more.py */,
+				7DD754591D2D580100A1411B /* less.py */,
+				7DD7545B1D2D581D00A1411B /* even_less.py */,
+			);
+			name = PythonScripts;
 			sourceTree = "<group>";
 		};
 		7DF39F431D2C49730099930F /* PythonMacroEngine */ = {
@@ -281,8 +304,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DD754541D2D548C00A1411B /* even_more.py in Resources */,
 				7DCC93DA1D26BEAF00E0A8F5 /* LaunchScreen.storyboard in Resources */,
+				7DD754561D2D57B300A1411B /* capture_output.py in Resources */,
+				7DD7545C1D2D581D00A1411B /* even_less.py in Resources */,
 				7DCC93D71D26BEAF00E0A8F5 /* Assets.xcassets in Resources */,
+				7DD754581D2D57E100A1411B /* more.py in Resources */,
+				7DD7545A1D2D580100A1411B /* less.py in Resources */,
 				7DCC93E61D26C01E00E0A8F5 /* LICENSE in Resources */,
 				7DCC93D51D26BEAF00E0A8F5 /* Main.storyboard in Resources */,
 			);
