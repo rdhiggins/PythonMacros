@@ -26,48 +26,50 @@
 #import "Python/Python.h"
 #import "ios.h"
 
-static int blocks = 0;
 
-process_block ios_process_block;
-
-static PyObject *iOS_numBlocks(PyObject *self, PyObject *args)
-{
-    if (!PyArg_ParseTuple(args, ":blocks"))
-        return NULL;
-
-    return PyLong_FromLong(blocks);
-}
-
-
+// Python method used to call registered blocks.  It calls back to swift to
+// actually progress the call.  The Python parameters are:
+//  1. block name as a string
+//  2. tup-le of paramters to pass to the swift block.
+//
+//  returns:
+//  1. Python return type
 static PyObject *iOS_callBlock(PyObject *self, PyObject *args)
 {
     return ios_process_block(args);
 }
 
+
+// Table that lists the valid Python methods in this module
 static PyMethodDef iOS_Methods[] = {
-    { "blocks", iOS_numBlocks, METH_VARARGS, "Returns the number of blocks installed"},
     { "call", iOS_callBlock, METH_VARARGS, "Call Objective-C block"},
     { NULL, NULL, 0, NULL }
 };
 
 
+// Table that contains the definition for this module
 static PyModuleDef iOS_Module = {
     PyModuleDef_HEAD_INIT, "ios", NULL, -1, iOS_Methods, NULL, NULL, NULL, NULL
 };
 
 
+// Routine used by CPython to initialize this module
 static PyObject *PyInit_iOS(void)
 {
     return PyModule_Create(&iOS_Module);
 }
 
 
+// Method used by swift to register this module with CPython.  It appends
+// the module definition table to the list of modules that CPython know about.
 void init_ios_module() {
     PyImport_AppendInittab("ios", &PyInit_iOS);
 }
 
 
 
+// Utility function used to return the Py_None object to swift.  Used to return
+// null from Python methods implemented as swift blocks.
 PyObject *PyNone_Ref() {
     Py_IncRef(Py_None);
     

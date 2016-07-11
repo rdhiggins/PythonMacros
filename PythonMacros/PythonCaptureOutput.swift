@@ -26,6 +26,14 @@
 import Foundation
 
 
+
+/// A class that is used to capture the output streams from CPython.  It loads
+/// the capture_output.py script and executes it.  This script creates two
+/// python objects that capture standard out and standard error.
+///
+/// The refreshOutput is called after CPython executes something.  The Python
+/// objects a queryied for any text, which is then appended to the stdOutput or
+/// stdError buffers.
 class PythonCaptureOutput {
     private let kValueKey = "value"
     private let kCaptureScriptName = "capture_output"
@@ -37,10 +45,21 @@ class PythonCaptureOutput {
     private var standardError: PythonObject?
     private var engine: PythonMacroEngine!
     
+    
+    /// Property that contains the standard output from CPython
     var stdOutput: String = String("")
+    
+    
+    /// Property that contains the standard error output from CPython
     var stdError: String = String("")
     
     
+    /// Initialization method that is called by PythonMacroEngine during
+    /// it's initialization process.
+    ///
+    /// - parameter module: A PythonObject reference to the __main__ module.
+    /// - parameter engine: A PythonMacroEngine reference used by the new object
+    /// to monitor.
     init(module: PythonObject, engine: PythonMacroEngine) {
         self.engine = engine
         
@@ -49,6 +68,7 @@ class PythonCaptureOutput {
         loadCaptureScript()
     }
     
+    
     deinit {
         module = nil
         standardOutput = nil
@@ -56,37 +76,48 @@ class PythonCaptureOutput {
     }
     
     
+    /// Method used to query the Python objects used to capture the streams.
     func refreshOutput() {
         refreshChannel(standardOutput!, channel: &stdOutput)
         refreshChannel(standardError!, channel: &stdError)
     }
     
     
+    /// Method used to clear the stdOutput and stdError buffers
     func clearBuffers() {
         stdOutput = ""
         stdError = ""
     }
     
     
-    func dumpStandardOutput() {
-        print(stdOutput, terminator: "")
-    }
-    
-    
-    func dumpStandardError() {
-        print(stdError, terminator: "")
-    }
-    
+    /// A private method used to query a Python object for the captured output.
+    /// The PythonObject reference to the particular python channel.  The Python
+    /// object's captured output is then cleared.
+    ///
+    /// - parameter object: A PythonObject reference to the python object used
+    /// to capture the stream output.
+    /// - parameter channel: The String buffer to append any new output to.
     private func refreshChannel(object: PythonObject, inout channel: String) {
+        // This queries the python object for its new content
         guard let output = object.getAttrString(kValueKey) else {
             return
         }
         
+        // content is appended to the buffer
         channel += output
+        
+        // This clears the python objects content
         object.setAttrString(kValueKey, value: "")
     }
     
     
+    /// A private method that performs the setup for capturing the streams
+    /// from CPython.  It first loads the capture_python.py script from the
+    /// applications resource bundle and then executes it in the CPython
+    /// runtime.
+    ///
+    /// The two python objects are then looked up and references
+    /// are stored so the the stream output can be queried.
     private func loadCaptureScript() {
         guard let module = self.module,
             captureScript = PythonScriptDirectory.sharedInstance.load(kCaptureScriptName, location: .Resource) else {
@@ -96,7 +127,8 @@ class PythonCaptureOutput {
         }
         
         if captureScript.run(engine) {
-            // Get a reference to the python object
+            // Get a reference to the python objects used to capture the
+            // output streams.
             standardOutput = module.getAttr(kPythonStandardOutputName)
             standardError = module.getAttr(kPythonStandardErrorName)
         }
@@ -104,7 +136,7 @@ class PythonCaptureOutput {
 }
 
 
-
+/// Extension used to provide description and debug description string
 extension PythonCaptureOutput: CustomStringConvertible, CustomDebugStringConvertible {
     var description: String {
         return customDescription()

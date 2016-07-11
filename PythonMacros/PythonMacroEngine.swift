@@ -25,32 +25,44 @@
 
 import Foundation
 
-// Javascript callbacks for getting/setting outerProgress
-private let myBlock: @convention(block) Float -> Float = { newValue in
-    print(newValue)
-    
-    return 33.3
-}
 
+/// Class used to interface with the CPython runtime.  Interaction is thru a
+/// shared public instance.
 class PythonMacroEngine {
 
+    /// Class property used to return the global instance object.
     static let sharedInstance: PythonMacroEngine = PythonMacroEngine()
     
+    /// Property that contains the standard out and standard error streams
+    /// from CPython.
     var output: PythonCaptureOutput?
+    
+    
+    /// Property that contains the object that monitors CPython for error.
     var error: PythonErrorMonitor?
 
+    
+    /// A private property that contains the ref to the __main__ module
+    /// object.  This is used to lookup objects that are loaded into the
+    /// runtime.
     private var mainModule: PythonObject!
+    
+    
+    /// Property that references the object that bridges swift blocks to
+    /// CPython.
     var callable: PythonFunctionBridge?
 
+    
+    /// Initialization method.  Currently sets up the CPython runtime and
+    /// activates it.
     init() {
+        // Register custom modules and setup CPython home directory
         setupExtensions()
         setupHome()
 
         Py_Initialize()
-
         PyEval_InitThreads();
         
-
         setupPath()
         setupMain()
         
@@ -64,22 +76,32 @@ class PythonMacroEngine {
     deinit {
         mainModule = nil
         output = nil
-        Py_Finalize()
+        
+        Py_Finalize()       // Close down CPython
     }
 
     
+    /// A method used to execute a Python script in CPython.
+    ///
+    /// - parameter script:   The Python script to execute
     func run(script: String) {
         PyRun_SimpleStringFlags(script, nil)
 
         checkEngineStatus()
     }
     
+    
+    /// A method that is called after an operation to check for errors and
+    /// stream output
     func checkEngineStatus() {
         output?.refreshOutput()
         error?.checkError()
     }
     
     
+    /// Method used to lookup a Python object in the __main__ module.
+    ///
+    /// - parameter objectName: String containing the Python objects name
     func lookupObject(objectName: String) -> PythonObject? {
         guard let mm = mainModule else { return nil }
         
@@ -89,11 +111,16 @@ class PythonMacroEngine {
     }
 
     
+    /// A private method used to register custom modules with CPython.
     private func setupExtensions() {
         init_ios_module()
     }
 
 
+    /// A private method used to inform CPython where its resources are located.
+    /// This is currently the application bundle.  The big ticket item is a zip
+    /// file containing the modules that CPython needs.  This is setup through
+    /// a custom puild phace script.
     private func setupHome() {
         let resourcePath = NSBundle.mainBundle().resourcePath!
 
@@ -103,6 +130,8 @@ class PythonMacroEngine {
     }
 
 
+    /// A private method used to setup the search path that CPython uses to find
+    /// scripts
     private func setupPath() {
         let resourcePath = NSBundle.mainBundle().resourcePath!
 
@@ -116,19 +145,24 @@ class PythonMacroEngine {
     }
 
     
+    /// A private setup method used to lookup the __main__ module and store
+    /// a reference to the mainModule property
     private func setupMain() {
         let module = PyImport_AddModule("__main__")
         mainModule = PythonObject(object: module)
         Py_DecRef(module)
     }
     
-    
+    /// A private method used to setup the Python function bridge.  This object
+    /// is used to allow swift blocks to be callable by python.
     private func setupFunctionBridge() {
         callable = PythonFunctionBridge(engine: self)
     }
 }
 
 
+
+/// Extension used to provide description and debug strings for this class
 extension PythonMacroEngine: CustomStringConvertible, CustomDebugStringConvertible {
     var description: String {
         return customDescription()

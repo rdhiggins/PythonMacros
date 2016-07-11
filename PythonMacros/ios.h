@@ -30,6 +30,5 @@ void init_ios_module();
 typedef PyObject *(^process_block)(PyObject *args);
 process_block ios_process_block;
 
-
 PyObject *PyNone_Ref();
 #endif /* ios_h */
