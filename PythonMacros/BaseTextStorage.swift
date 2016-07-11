@@ -8,6 +8,9 @@
 
 import UIKit
 
+/// A class used as a base class for declaring custom NSTextStorage classes.
+/// This class contains generic implementations of methods required in 
+/// any NSTextStorage subclasses.
 class BaseTextStorage: NSTextStorage {
     
     private let storage = NSMutableAttributedString()

@@ -8,6 +8,9 @@
 
 import UIKit
 
+
+/// A incomplete class for syntax highlighting Python code in a CodeView.
+/// Hopefully a good starting point.
 class SyntaxTextStorage: BaseTextStorage {
     
     let pythonKeywords: [String] = [

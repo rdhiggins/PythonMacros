@@ -60,7 +60,14 @@ class PythonFunction {
     /// from CPython
     var block: PythonFunctionBlock
     
-    
+
+    /// Initialization method.
+    ///
+    /// - parameter name: The name of the function in Python
+    /// - parameter callArgs:  Array of PythonTypes that specify the number and
+    /// type of the functions arguments
+    /// - parameter returnType: The PythonType of the return value
+    /// - parameter block: The swift block to call from python
     init(name: String, callArgs: [PythonTypes], returnType: PythonTypes, block: PythonFunctionBlock) {
         self.name = name
         self.callArgs = callArgs
@@ -68,28 +75,25 @@ class PythonFunction {
         self.block = block
     }
     
-    
+
+    /// Public method used by the PythonFunctionBridge to call the swift block.
+    ///
+    /// - parameter args: An array of the arguments that should be passed
+    /// to the swift block
+    /// - returns: The object (if any) to be passwed back to the python
+    /// runtime.
     func call(args: [AnyObject]?) -> AnyObject? {
         return block(args)
     }
-    
-    
-    private func argsFormatString() -> String {
-        var ret = ""
-        
-        for arg in callArgs {
-            ret += arg.rawValue
-        }
-        
-        return ret
-    }
-    
-    
-    private func returnTypeFormat() -> String {
-        return returnType.rawValue
-    }
 
 
+    /// Public method used by the PythonFunctionBridge to parse the PyObject
+    /// tuple that contains the blocks argument values.  This method then
+    /// returns the array of values that are passed to the swift block.
+    ///
+    /// - parameter tuple: The UnsafeMutablePointer<PyObject> of the argument
+    /// tuple in python.
+    /// - returns: Array of swift values that will be passed to the swift block
     func parseArgs(tuple: UnsafeMutablePointer<PyObject>) -> [AnyObject] {
         var ret: [AnyObject] = []
         var index: Int = 0
@@ -143,6 +147,12 @@ class PythonFunction {
     }
 
 
+    /// A public method used by the PythonFunctionBridge object to encode the
+    /// return type from the swift block into a proper python PyObject.
+    ///
+    /// - parameter returnValue: The return value to encode
+    /// - returns: A UnsafeMutablePointer<PyObject> that is the value encoded
+    /// into the proper python object
     func encodeReturn(returnValue: AnyObject?) -> UnsafeMutablePointer<PyObject> {
         switch returnType {
         case .Double:
@@ -181,8 +191,13 @@ class PythonFunction {
             return PyNone_Ref()
         }
     }
-    
-    
+
+
+    /// A private method used to create the return value in the CPython runtime.
+    ///
+    /// - parameter value: The swift value to encode into the python runtime
+    /// - returns: A UnsafeMutablePointer<PyObject> of the encoded
+    /// PyObject.
     private func createPythonReturnObject<ValueType: CVarArgType>(value: ValueType) -> UnsafeMutablePointer<PyObject> {
         let args: [CVarArgType] = [value]
         

@@ -9,6 +9,8 @@
 import UIKit
 
 
+/// Enum used to return color values for the codeview.  Currently a incomplete
+/// implementation at this point.  Hopefully a good starting point.
 enum SyntaxHighlightThemes {
     case Default
     

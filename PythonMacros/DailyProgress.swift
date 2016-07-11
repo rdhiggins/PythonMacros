@@ -9,12 +9,25 @@
 import Foundation
 
 
+/// Class used to store the global progress model used for this tutorial.  The
+/// daily progress is represented as three properties off of the singleton.
+///
+/// This class also register 6 swift blocks into the CPython runtime.  These
+/// python functions are used by python scripts to retrieve/set each of the
+/// three progress values.
+///
+/// This class also supports a delegate for getting notification of
+/// any progress changes.
 class DailyProgress {
+
+    /// Class property used to retrieve the singleton object
     static var sharedInstance: DailyProgress = DailyProgress()
     
     private var engine: PythonMacroEngine = PythonMacroEngine.sharedInstance
     private var functions: [PythonFunction] = []
 
+
+    /// Property containing the current value for the daily active calories
     var activeCalories: Double = 0.0 {
         didSet {
             delegate?.activeCalorieUpdate(activeCalories)
@@ -22,6 +35,7 @@ class DailyProgress {
     }
 
 
+    /// Property containing the current value for the daily active minutes
     var activity: Double = 0.0 {
         didSet {
             delegate?.activityUpdate(activity)
@@ -29,6 +43,7 @@ class DailyProgress {
     }
 
 
+    /// Property containing the current number of standup hours
     var standup: Double = 0.0 {
         didSet {
             delegate?.standupUpdate(standup)
@@ -36,6 +51,7 @@ class DailyProgress {
     }
 
 
+    /// Property used to register delegate
     var delegate: DailyProgressDelegate?
 
 
@@ -44,6 +60,8 @@ class DailyProgress {
     }
 
 
+    /// A private method used to register the swift blocks with the
+    /// PythonMacroEngine.
     private func setupPythonCallbacks() {
         functions.append(PythonFunction(name: "getActiveCalories", callArgs: [], returnType: .Double, block: { Void -> AnyObject? in
             return self.activeCalories
