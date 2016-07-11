@@ -25,19 +25,44 @@
 
 import Foundation
 
-
+/// The class that manages a Python macro function.  This is a python
+/// function that is called from swift.  This supports variable parameters
+/// and different return types.
+///
+/// Only works with PythonScripts that are part of the application's resource
+/// bundle
 class PythonMacro {
+    
+    /// Property containing the reference to the PythonScript object that
+    /// is python function for this macro
     let script: PythonScript?
+    
+    
+    /// Property containing the name of the python function.
     let functionName: String?
+    
+    
+    /// Property containing a PythonObject reference to the loaded PyObject
+    /// for this macro
     var object: PythonObject?
     
+    
+    /// Initialization method.
+    ///
+    /// - parameter filename: The filename of the resource script
+    /// - parameter functionName: The python functionName
     init(filename: String, functionName: String) {
         self.functionName = functionName
+        
         script = PythonScript.loadResourceScript(filename)
 
         setupMacro()
     }
     
+    
+    /// A private method used to load the macro into the CPython
+    /// runtime.  It also store a reference to the loaded PyObject
+    /// for the macro
     private func setupMacro() {
         guard let script = self.script,
             name = functionName else { return }
@@ -47,10 +72,21 @@ class PythonMacro {
         object = PythonMacroEngine.sharedInstance.lookupObject(name)
     }
     
+    
+    /// A public method used to reload the python macro into the CPython
+    /// environment.  Use this method to update the macro when the python
+    /// script has changed.
     func registerMacro() {
         setupMacro()
     }
     
+    
+    /// A private method used to construct the list of argument types.
+    /// This is needed in the call to the CPython environment to execute
+    /// the macro.
+    ///
+    /// - parameters args: A CVarArgType array of the arguments to pass
+    /// to the macro.
     private func buildArgumentsString(args: [CVarArgType]) -> String {
         var ret = "("
         
@@ -72,6 +108,11 @@ class PythonMacro {
         return ret + ")"
     }
     
+    
+    /// A private method that performs the call to the python macro.
+    ///
+    /// - parameter args: A CVarArgType array of the arguments to pass
+    /// to the python macro
     private func call_va(args: [CVarArgType]) -> PythonObject {
         var rv: UnsafeMutablePointer<PyObject> = nil
         
@@ -86,22 +127,51 @@ class PythonMacro {
         return PythonObject(object: rv)
     }
 
+    
+    /// A public method used to a python macro that does not return anything.
+    ///
+    /// - parameter args: A CVarArgType array of the arguments to pass
+    /// to the python macro
     func call(args: CVarArgType...) {
         self.call_va(args)
     }
+
     
+    /// A public method used to a python macro that returns a Double.
+    ///
+    /// - parameter args: A CVarArgType array of the arguments to pass
+    /// to the python macro
+    /// - returns: A double from the python macro
     func call(args: CVarArgType...) -> Double {
         return self.call_va(args).toDouble()
     }
     
+    
+    /// A public method used to a python macro that returns a Float.
+    ///
+    /// - parameter args: A CVarArgType array of the arguments to pass
+    /// to the python macro
+    /// - returns: A Float from the python macro
     func call(args: CVarArgType...) -> Float {
         return self.call_va(args).toFloat()
     }
     
+    
+    /// A public method used to a python macro that returns a optional string.
+    ///
+    /// - parameter args: A CVarArgType array of the arguments to pass
+    /// to the python macro
+    /// - returns: A optional string from the python macro
     func call(args: CVarArgType...) -> String? {
         return self.call_va(args).toString()
     }
     
+    
+    /// A public method used to a python macro that returns a Int.
+    ///
+    /// - parameter args: A CVarArgType array of the arguments to pass
+    /// to the python macro
+    /// - returns: A Double from the python macro
     func call(args: CVarArgType...) -> Int {
         return self.call_va(args).toInt()
     }

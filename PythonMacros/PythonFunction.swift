@@ -28,7 +28,11 @@ import Foundation
 
 typealias PythonFunctionBlock = [AnyObject]? -> AnyObject?
 
+
+/// Class used to represent a python callable swift block.
 class PythonFunction {
+    
+    /// Enum defining the supported python types
     enum PythonTypes: String {
         case Double = "d"
         case Float = "f"
@@ -38,9 +42,22 @@ class PythonFunction {
         case Void = "v"
     }
     
+    
+    /// Property containing the function name for the swift block
     var name: String
+    
+    
+    /// Property containing the array of types for the arguments to the 
+    /// swift blocks
     var callArgs: [PythonTypes]
+    
+    
+    /// Property that specifies the python return type of the swift block
     var returnType: PythonTypes
+    
+    
+    /// Property containing the actual swift block that will be called
+    /// from CPython
     var block: PythonFunctionBlock
     
     
@@ -57,7 +74,7 @@ class PythonFunction {
     }
     
     
-    func argsFormatString() -> String {
+    private func argsFormatString() -> String {
         var ret = ""
         
         for arg in callArgs {
@@ -68,7 +85,7 @@ class PythonFunction {
     }
     
     
-    func returnTypeFormat() -> String {
+    private func returnTypeFormat() -> String {
         return returnType.rawValue
     }
 

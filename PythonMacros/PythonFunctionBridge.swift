@@ -25,8 +25,24 @@
 
 import Foundation
 
+
+// used to generate parameter names in python
 private let alphabet = "abcdefghijklmnopqrstuvwxyz"
 
+
+/// A class used to manage the functionality for calling swift blocks from
+/// python.  This class is initiated by the PythonMacroEngine object.
+///
+/// This class facilitates the calling of swift blocks by handling the
+/// convertion of parameters and return types.
+///
+/// This class relies upon the custom module defined in the objective-c ios.m/.h
+/// files.  This module provides a single function such that a callable swift
+/// block is defined the __main__ module like so:
+///
+/// def functionName(a: type1, b: type2, ...) -> returnType:
+///     return call('functionName',(a,b...))
+///
 class PythonFunctionBridge {
     private var engine: PythonMacroEngine?
     
@@ -38,7 +54,16 @@ class PythonFunctionBridge {
         setupHook()
     }
     
-    
+
+    /// A public method used to register a swift block as a python function
+    /// loaded into the CPython runtime.  This method essentially generates
+    /// a python script defining a function that is called from python.  The
+    /// function calls the custom ios module with the block name and a tuple
+    /// containing the parameters.  These are converted to swift, the block is
+    /// called, and the return value is passed back to the CPython runtime.
+    ///
+    /// - parameter function: A PythonFunction reference to register.
+    /// - returns: A bool indicating a success
     func registerFunction(function: PythonFunction) -> Bool {
         var ret = false
         
@@ -56,6 +81,10 @@ class PythonFunctionBridge {
     }
     
     
+    /// A private method used to register a block into the global variable
+    /// defined in the ios python module.  This block performs the steps
+    /// necessary for the block to be called with the proper parameters and
+    /// return the required value.
     private func setupHook() {
         ios_process_block = { py_obj -> UnsafeMutablePointer<PyObject> in
             let (oname, tuple) = self.parseArgs(py_obj)
@@ -80,6 +109,15 @@ class PythonFunctionBridge {
     }
     
     
+    /// A private method used to parse the PyObject arguments passed from
+    /// the CPython runtime that are expected to be handed to the registered
+    /// swift block.
+    ///
+    /// - parameters args: A UnsafeMutablePointer<PyObject> of the arguments
+    /// passed to the swift block from CPthon
+    /// - returns: A swift tuple that contains the name of the swift block
+    /// and another UnsafeMutablePointer<PyObject> to the python tuple
+    /// containing the arguments for the swift block
     private func parseArgs(args: UnsafeMutablePointer<PyObject>) -> (String?, UnsafeMutablePointer<PyObject>) {
         let buffer: UnsafeMutablePointer<UnsafeMutablePointer<Int8>> = UnsafeMutablePointer<UnsafeMutablePointer<Int8>>.alloc(1)
         let tuple: UnsafeMutablePointer<UnsafeMutablePointer<PyObject>> = UnsafeMutablePointer<UnsafeMutablePointer<PyObject>>.alloc(1)
@@ -97,6 +135,14 @@ class PythonFunctionBridge {
     }
     
     
+    /// A private method used to generate the python function definition 
+    /// that is loaded into python that represents the swift block that is
+    /// being registered.
+    ///
+    /// - parameter function: A PythonFunction reference to generate the
+    /// prototype for.
+    /// - returns: A python script that defines the function for the swift
+    /// block.
     private func prototypeString(function: PythonFunction) -> String {
         let argNames: [String] = generateArgNames(function.callArgs.count)
         let argTypes: [String] = generateArgTypes(function.callArgs)
@@ -128,6 +174,11 @@ class PythonFunctionBridge {
     }
     
     
+    /// A private method used to generate the list of argument names
+    ///
+    /// - parameter numArgs:  Number of arguments for the function
+    /// - returns: Array of strings that contain a argument name for
+    /// each argument.
     private func generateArgNames(numArgs: Int) -> [String] {
         var ret: [String] = []
         
@@ -141,6 +192,12 @@ class PythonFunctionBridge {
     }
     
     
+    /// A private method used to generate a list of the argument types
+    ///
+    /// - parameters args: Array of the PythonTypes for the arguments for the
+    /// function
+    /// - returns Array of strings containing the types to use for the
+    /// functions argument.
     private func generateArgTypes(args: [PythonFunction.PythonTypes]) -> [String] {
         var ret: [String] = []
         
@@ -152,6 +209,7 @@ class PythonFunctionBridge {
     }
     
     
+    /// A private method used to convert a PythonTypes enum to a string.
     private func pythonType(type: PythonFunction.PythonTypes) -> String? {
         switch type {
         case .Float, .Double:
