@@ -26,11 +26,22 @@
 import Foundation
 
 
+
+/// Class that represents a Python script.  This class is used to load scripts
+/// for the application and execute them in the CPython runtime.
 class PythonScript {
 
+    /// Property containing the filename (minus the extension) of the python
+    /// script.
     var name: String?
+    
+    
+    /// Property specifies where the script was loaded from.
     var location: PythonScriptLocation?
+    
+    /// Property containing the actual python script.
     var python: String?
+    
     
     init(name: String, python: String?, location: PythonScriptLocation) {
         self.name = name
@@ -39,11 +50,23 @@ class PythonScript {
     }
     
     
+    /// Method used to execute the python script in the CPython runtime.
+    ///
+    /// returns: A bool indicating the success or failure of running
+    /// the script in CPython runtime.  Only returns false if there is nothing
+    /// in the python property
     func run() -> Bool {
         return self.run(PythonMacroEngine.sharedInstance)
     }
     
     
+    /// Method used to execute the python script in the specified CPython
+    /// runtime.
+    ///
+    /// - parameter engine: PythonMacroEngine reference to execute the script in
+    /// returns: A bool indicating the success or failure of running
+    /// the script in CPython runtime.  Only returns false if there is nothing
+    /// in the python property
     func run(engine: PythonMacroEngine) -> Bool {
         if let python = self.python {
             engine.run(python)
@@ -55,6 +78,10 @@ class PythonScript {
     }
     
     
+    /// A class method used to create a PythonScript object with a python script
+    /// already loaded in memory.
+    ///
+    /// - paramter name: A string containing the name of the python script.
     class func createMemoryScript(name: String, python: String) -> PythonScript {
         let ps = PythonScript(name: name, python: python, location: .Memory)
 
@@ -62,18 +89,31 @@ class PythonScript {
     }
 
 
+    /// A class method used to load a script from the application resource bundle.
+    ///
+    /// - parameter name:  A filename (minus extension) of the script to load
+    /// the resource bundle.
+    /// - returns: A PythonScript on successfully loading the specified script.
     class func loadResourceScript(name: String) -> PythonScript? {
         return PythonScriptDirectory.sharedInstance.load(name, location: .Resource)
     }
 
 
+    /// A class method used to load a script from the applications document
+    /// directory.
+    ///
+    /// - parameter name:  A filename (minus extension) of the script to load
+    /// the resource bundle.
+    /// - returns: A PythonScript on successfully loading the specified script.
     class func loadUserScript(name: String) -> PythonScript? {
         return PythonScriptDirectory.sharedInstance.load(name, location: .Document)
     }
 }
 
 
-
+/// Function used to test if two PythonScript objects are equivalent.
+///
+/// - returns:  True if the two objects are equal
 func ==(lhs: PythonScript, rhs: PythonScript) -> Bool {
     if (lhs.name == rhs.name) && (lhs.location == rhs.location) {
         return true

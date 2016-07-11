@@ -25,7 +25,8 @@
 
 import UIKit
 
-
+/// A class used by PythonMacroEngine to monitor the runtime for any errors.
+/// A UIAlertController is displayed if any error are encounters.
 class PythonErrorMonitor {
 
     private let engine: PythonMacroEngine
@@ -35,6 +36,10 @@ class PythonErrorMonitor {
     }
 
 
+    /// The method used to check the runtime to any errors.  Currently it only
+    /// looks at the captured standard error for error indications.
+    ///
+    /// TODO: Query the CPython runtime for any exceptions.
     func checkError() {
 
         // Only catching errors using stdError redirect

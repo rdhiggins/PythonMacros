@@ -26,6 +26,7 @@
 import Foundation
 
 
+/// Enum used to specify possible script locations.
 enum PythonScriptLocation {
     
     case Document

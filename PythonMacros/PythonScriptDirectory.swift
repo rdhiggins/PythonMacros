@@ -26,10 +26,16 @@
 import Foundation
 
 
+/// A class used to manage stored scripts.
 class PythonScriptDirectory {
     static let sharedInstance = PythonScriptDirectory()
     
+    
+    /// Property containing a list of Python scripts stored in the applications
+    /// documents directory.
     var scripts: [PythonScript] = []
+    
+    /// Property containing a delegate object reference
     var delegate: PythonScriptDictionaryDelegate?
     
     private let fileManager = NSFileManager()
@@ -42,6 +48,8 @@ class PythonScriptDirectory {
     }
     
 
+    /// Method used to scan the application documents directory for any
+    /// python scripts that are stored there.
     func scan() {
         var s: [PythonScript] = []
         
@@ -64,11 +72,12 @@ class PythonScriptDirectory {
         delegate?.scriptsUpdated()
     }
     
-    func update() {
-        delegate?.scriptsUpdated()
-    }
-
-
+    
+    /// Method used to load a script.
+    ///
+    /// - parameter name: A string specifying the filename (without extension)
+    /// of the python script to load
+    /// - parameter location: Where to load the script from
     func load(name: String, location: PythonScriptLocation) -> PythonScript? {
         var ret: PythonScript?
         
@@ -91,6 +100,12 @@ class PythonScriptDirectory {
     }
     
     
+    /// A method used to save a script to the applications documents directory.
+    ///
+    /// - parameter script: A PythonScript reference of the script to save.
+    /// A script that is currently in memory will get stored to the application's
+    /// documents directory
+    /// - returns: A bool indicating success of failure of the save.
     func save(script: PythonScript) -> Bool {
         guard let location = script.location else { return false }
         var ret: Bool = false
@@ -113,6 +128,14 @@ class PythonScriptDirectory {
     }
     
     
+    /// A method used to delete a script from the application's documents
+    /// directory.
+    ///
+    /// - parameter script: A PythonScript reference of the script to delete.
+    /// Only works for scripts that are stored in the application's
+    /// documents directory.
+    /// - returns: A bool indicating success of failure.  It will return false
+    /// for scripts in memory or as part of the application's resource bundle
     func delete(script: PythonScript) -> Bool {
         guard let location = script.location,
                     name = script.name else {
@@ -147,20 +170,36 @@ class PythonScriptDirectory {
     }
     
     
-    func rename(oldName: String, script: PythonScript) {
-        guard let newName = script.name else { return }
+    /// A method used to rename a script.  Only supports scripts that are
+    /// located in the documents directory and have a name.
+    ///
+    /// - parameter oldName: The previous name of the PythonScript
+    /// - parameter script: The PythonScript reference to rename.  The
+    /// object must have the new name in its name property.
+    /// - returns: A bool indicating success
+    func rename(oldName: String, script: PythonScript) -> Bool {
+        guard script.location == .Document,
+            let newName = script.name else { return false }
         
+        var ret: Bool = false
         let oldUrl = docURL.URLByAppendingPathComponent("\(oldName).py")
         let newUrl = docURL.URLByAppendingPathComponent("\(newName).py")
         
         do {
             try fileManager.moveItemAtURL(oldUrl, toURL: newUrl)
+            ret = true
         } catch {
             print("error in rename")
         }
+        
+        return ret
     }
     
     
+    /// A method used to reload the script from storage.  Does nothing for
+    /// memory scripts.
+    ///
+    /// - parameter script: The PythonScript reference to reload from storage.
     func refresh(script: PythonScript) {
         guard let location = script.location, name = script.name else { return }
         
@@ -176,6 +215,11 @@ class PythonScriptDirectory {
         }
     }
     
+    
+    /// A private method used to save a PythonScript object.
+    ///
+    /// - parameter script: A reference to a PythonScript object.
+    /// - returns: A bool indicating success
     private func saveScript(script: PythonScript) -> Bool {
         var ret: Bool = false
         
@@ -186,12 +230,17 @@ class PythonScriptDirectory {
         let fileURL = docURL.URLByAppendingPathComponent("\(name).py")
         ret = savePython(python, url: fileURL)
         
-        print("done")
-        
         return ret
     }
     
     
+    /// A private method used to store the python script string to the
+    /// specified location as a NSUTF8StringEncoding
+    ///
+    /// - parameter python: A string containing the script to save
+    /// - parameter url: A NSURL reference that specifies the location
+    /// to write to.
+    /// - returns: A bool indicating the success of the operation
     private func savePython(python: String, url: NSURL) -> Bool {
         do {
             try python.writeToURL(url, atomically: true, encoding: NSUTF8StringEncoding)
@@ -202,6 +251,12 @@ class PythonScriptDirectory {
     }
     
     
+    /// A private method used to load the NSUTF8StringEncoding contents and
+    /// returns it.
+    ///
+    /// - parameter url: A NSURL reference of the file to load the script from.
+    /// - returns: A optional string containing the script if the operation
+    /// was successful
     private func loadPython(url: NSURL) -> String? {
         var ret: String?
         
@@ -213,6 +268,12 @@ class PythonScriptDirectory {
     }
     
     
+    /// A method used to generate a unique name given a name inputted.  This
+    /// method checks against the scripts property.  If the name is in the
+    /// script property and is a different script, a new name is generated
+    ///
+    /// - parameter name: The proposed script name
+    /// - returns: A unique string name
     func generateUniqueName(name: String) -> String {
         var uniqueName = name
         var index = 1
@@ -226,7 +287,13 @@ class PythonScriptDirectory {
         return uniqueName
     }
 
-    
+
+    /// A private method used to load a python string from the application
+    /// resource bundle
+    ///
+    /// - parameter name: The filename (minus extension) to load
+    /// - returns: A optional string containing the script if the operation
+    /// was successful
     private func loadResourcePython(name: String) -> String? {
         guard let url = NSBundle.mainBundle().URLForResource(name, withExtension: "py") else {
             print("Failed to find python script in mainBindle: \(name)")
@@ -237,6 +304,12 @@ class PythonScriptDirectory {
     }
     
     
+    /// A private method used to load a python string from the application
+    /// document directory
+    ///
+    /// - parameter name: The filename (minus extension) to load
+    /// - returns: A optional string containing the script if the operation
+    /// was successful
     private func loadUserPython(name: String) -> String? {
         let url = docURL.URLByAppendingPathComponent("\(name).py")
         
@@ -247,5 +320,6 @@ class PythonScriptDirectory {
 
 
 protocol PythonScriptDictionaryDelegate {
+    /// Called when the list of scripts has changed
     func scriptsUpdated()
 }
