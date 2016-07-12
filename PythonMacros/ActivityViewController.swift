@@ -25,6 +25,9 @@
 
 import UIKit
 
+
+/// View controller class that is used to demonstrate the calling
+/// of macros in CPython
 class ActivityViewController: UIViewController, DailyProgressDelegate {
 
     private let dailyProgress: DailyProgress = DailyProgress.sharedInstance
@@ -45,7 +48,9 @@ class ActivityViewController: UIViewController, DailyProgressDelegate {
         setupMacros()
     }
 
-    
+
+    /// A private method used to setup the PythonMacros that will get called
+    /// when the user selects one of four buttons displayed.
     private func setupMacros() {
         macros.append(PythonMacro(filename: "even_more", functionName: "evenMore"))
         macros.append(PythonMacro(filename: "more", functionName: "more"))
@@ -53,7 +58,8 @@ class ActivityViewController: UIViewController, DailyProgressDelegate {
         macros.append(PythonMacro(filename: "even_less", functionName: "evenLess"))
     }
 
-    
+
+    ///
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "EditMacros" {
             if let emvc = segue.destinationViewController as? EditMacroViewController {
