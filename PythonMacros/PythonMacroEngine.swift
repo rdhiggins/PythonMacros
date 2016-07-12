@@ -94,6 +94,11 @@ class PythonMacroEngine {
     /// A method that is called after an operation to check for errors and
     /// stream output
     func checkEngineStatus() {
+        // Check for any exceptions.  Force print if any
+        if PyErr_Occurred() != nil {
+            PyErr_PrintEx(1)
+        }
+
         output?.refreshOutput()
         error?.checkError()
     }
