@@ -122,7 +122,7 @@ class PythonMacro {
             rv = PyEval_CallObjectWithKeywords(object!.object, a, nil)
             Py_DecRef(a)
         }
-        
+
         PythonMacroEngine.sharedInstance.checkEngineStatus()
         return PythonObject(object: rv)
     }
