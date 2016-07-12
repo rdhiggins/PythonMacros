@@ -162,35 +162,35 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="73" height="30"/>
                                                 <state key="normal" title="Even More"/>
                                                 <connections>
-                                                    <action selector="evenMoreProgress:" destination="gUW-7E-rlr" eventType="touchUpInside" id="ywi-w8-4ac"/>
+                                                    <action selector="callPythonMacro:" destination="gUW-7E-rlr" eventType="touchUpInside" id="ZOB-Ei-P8d"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xuv-Es-M8F">
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xuv-Es-M8F">
                                                 <rect key="frame" x="141" y="0.0" width="36" height="30"/>
                                                 <state key="normal" title="More"/>
                                                 <connections>
-                                                    <action selector="moreProgress:" destination="gUW-7E-rlr" eventType="touchUpInside" id="vw3-cV-8sE"/>
+                                                    <action selector="callPythonMacro:" destination="gUW-7E-rlr" eventType="touchUpInside" id="ayZ-FX-qVO"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wS5-SM-sdW">
+                                            <button opaque="NO" tag="55" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wS5-SM-sdW">
                                                 <rect key="frame" x="266" y="0.0" width="30" height="30"/>
                                                 <state key="normal" title="Edit"/>
                                                 <connections>
                                                     <segue destination="Exe-oU-8Lk" kind="show" identifier="EditMacros" id="wVg-pb-weo"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ce-6L-rbb">
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ce-6L-rbb">
                                                 <rect key="frame" x="387" y="0.0" width="32" height="30"/>
                                                 <state key="normal" title="Less"/>
                                                 <connections>
-                                                    <action selector="lessProgress:" destination="gUW-7E-rlr" eventType="touchUpInside" id="a6p-UB-ejH"/>
+                                                    <action selector="callPythonMacro:" destination="gUW-7E-rlr" eventType="touchUpInside" id="b2s-sZ-8Lp"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IcK-ih-fFs">
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IcK-ih-fFs">
                                                 <rect key="frame" x="491" y="0.0" width="69" height="30"/>
                                                 <state key="normal" title="Even Less"/>
                                                 <connections>
-                                                    <action selector="evenLessProgress:" destination="gUW-7E-rlr" eventType="touchUpInside" id="wi4-46-hfs"/>
+                                                    <action selector="callPythonMacro:" destination="gUW-7E-rlr" eventType="touchUpInside" id="bcc-ei-TpT"/>
                                                 </connections>
                                             </button>
                                         </subviews>

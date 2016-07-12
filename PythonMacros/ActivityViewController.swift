@@ -59,7 +59,6 @@ class ActivityViewController: UIViewController, DailyProgressDelegate {
     }
 
 
-    ///
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "EditMacros" {
             if let emvc = segue.destinationViewController as? EditMacroViewController {
@@ -68,28 +67,13 @@ class ActivityViewController: UIViewController, DailyProgressDelegate {
         }
     }
 
-    @IBAction func evenMoreProgress(sender: UIButton) {
-        let r: String? = macros[0].call()
-        messageLabel.text = r
-    }
-    
-    
-    @IBAction func moreProgress(sender: UIButton) {
-        let r: String? = macros[1].call()
-        messageLabel.text = r
-    }
-    
-    
-    @IBAction func lessProgress(sender: UIButton) {
-        let r: String? = macros[2].call()
+
+    @IBAction func callPythonMacro(sender: UIButton) {
+        print(sender.tag)
+        let r: String? = macros[sender.tag].call()
         messageLabel.text = r
     }
 
-    
-    @IBAction func evenLessProgress(sender: UIButton) {
-        let r: String? = macros[3].call()
-        messageLabel.text = r
-    }
 
 
     func activeCalorieUpdate(newValue: Double) {
