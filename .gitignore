@@ -224,5 +224,5 @@ fastlane/screenshots
 
 Python.framework
 OpenSSL.framework
-libbz2.a
-liblzma.a
+XZ.framework
+BZip2.framework
