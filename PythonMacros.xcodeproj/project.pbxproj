@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D502A541D3556B300C912FF /* BZip2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D502A501D3556B300C912FF /* BZip2.framework */; };
+		7D502A551D3556B300C912FF /* OpenSSL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D502A511D3556B300C912FF /* OpenSSL.framework */; };
+		7D502A561D3556B300C912FF /* Python.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D502A521D3556B300C912FF /* Python.framework */; };
+		7D502A571D3556B300C912FF /* XZ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D502A531D3556B300C912FF /* XZ.framework */; };
 		7D7D5D9F1D2C32D500EDF2E3 /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D5D991D2C32D500EDF2E3 /* CodeView.swift */; };
 		7D7D5DA01D2C32D500EDF2E3 /* LineNumberTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D5D9A1D2C32D500EDF2E3 /* LineNumberTextView.swift */; };
 		7D7D5DA11D2C32D500EDF2E3 /* LineNumberLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D5D9B1D2C32D500EDF2E3 /* LineNumberLayoutManager.swift */; };
@@ -40,16 +44,16 @@
 		7DF39F561D2C499D0099930F /* PythonFunctionBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF39F4C1D2C499D0099930F /* PythonFunctionBridge.swift */; };
 		7DF39F571D2C499D0099930F /* PythonFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF39F4D1D2C499D0099930F /* PythonFunction.swift */; };
 		7DF39F5C1D2C49C60099930F /* ios.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF39F5A1D2C49C60099930F /* ios.m */; };
-		7DF39F621D2C4CDB0099930F /* OpenSSL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DF39F601D2C4CDB0099930F /* OpenSSL.framework */; };
-		7DF39F631D2C4CDB0099930F /* Python.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DF39F611D2C4CDB0099930F /* Python.framework */; };
-		7DF39F651D2C4CF50099930F /* libbz2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DF39F641D2C4CF50099930F /* libbz2.a */; };
-		7DF39F671D2C4D090099930F /* liblzma.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DF39F661D2C4D090099930F /* liblzma.a */; };
 		7DF39F691D2C4D340099930F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DF39F681D2C4D340099930F /* libz.tbd */; };
 		7DF39F6B1D2C4D4E0099930F /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DF39F6A1D2C4D4E0099930F /* libsqlite3.tbd */; };
 		7DF39F6D1D2C4EBB0099930F /* DailyProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF39F6C1D2C4EBB0099930F /* DailyProgress.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7D502A501D3556B300C912FF /* BZip2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BZip2.framework; sourceTree = "<group>"; };
+		7D502A511D3556B300C912FF /* OpenSSL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OpenSSL.framework; sourceTree = "<group>"; };
+		7D502A521D3556B300C912FF /* Python.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Python.framework; sourceTree = "<group>"; };
+		7D502A531D3556B300C912FF /* XZ.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = XZ.framework; sourceTree = "<group>"; };
 		7D7D5D991D2C32D500EDF2E3 /* CodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
 		7D7D5D9A1D2C32D500EDF2E3 /* LineNumberTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineNumberTextView.swift; sourceTree = "<group>"; };
 		7D7D5D9B1D2C32D500EDF2E3 /* LineNumberLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineNumberLayoutManager.swift; sourceTree = "<group>"; };
@@ -88,10 +92,6 @@
 		7DF39F591D2C49C60099930F /* PythonMacros-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PythonMacros-Bridging-Header.h"; sourceTree = "<group>"; };
 		7DF39F5A1D2C49C60099930F /* ios.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ios.m; sourceTree = "<group>"; };
 		7DF39F5B1D2C49C60099930F /* ios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ios.h; sourceTree = "<group>"; };
-		7DF39F601D2C4CDB0099930F /* OpenSSL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OpenSSL.framework; sourceTree = "<group>"; };
-		7DF39F611D2C4CDB0099930F /* Python.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Python.framework; sourceTree = "<group>"; };
-		7DF39F641D2C4CF50099930F /* libbz2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libbz2.a; sourceTree = "<group>"; };
-		7DF39F661D2C4D090099930F /* liblzma.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = liblzma.a; sourceTree = "<group>"; };
 		7DF39F681D2C4D340099930F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		7DF39F6A1D2C4D4E0099930F /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		7DF39F6C1D2C4EBB0099930F /* DailyProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyProgress.swift; sourceTree = "<group>"; };
@@ -102,12 +102,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7DF39F631D2C4CDB0099930F /* Python.framework in Frameworks */,
-				7DF39F621D2C4CDB0099930F /* OpenSSL.framework in Frameworks */,
+				7D502A561D3556B300C912FF /* Python.framework in Frameworks */,
 				7DF39F6B1D2C4D4E0099930F /* libsqlite3.tbd in Frameworks */,
+				7D502A551D3556B300C912FF /* OpenSSL.framework in Frameworks */,
 				7DF39F691D2C4D340099930F /* libz.tbd in Frameworks */,
-				7DF39F651D2C4CF50099930F /* libbz2.a in Frameworks */,
-				7DF39F671D2C4D090099930F /* liblzma.a in Frameworks */,
+				7D502A571D3556B300C912FF /* XZ.framework in Frameworks */,
+				7D502A541D3556B300C912FF /* BZip2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,10 +237,10 @@
 			children = (
 				7DF39F6A1D2C4D4E0099930F /* libsqlite3.tbd */,
 				7DF39F681D2C4D340099930F /* libz.tbd */,
-				7DF39F661D2C4D090099930F /* liblzma.a */,
-				7DF39F641D2C4CF50099930F /* libbz2.a */,
-				7DF39F601D2C4CDB0099930F /* OpenSSL.framework */,
-				7DF39F611D2C4CDB0099930F /* Python.framework */,
+				7D502A501D3556B300C912FF /* BZip2.framework */,
+				7D502A511D3556B300C912FF /* OpenSSL.framework */,
+				7D502A521D3556B300C912FF /* Python.framework */,
+				7D502A531D3556B300C912FF /* XZ.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

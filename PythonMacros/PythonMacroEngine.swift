@@ -130,7 +130,7 @@ class PythonMacroEngine {
         let resourcePath = NSBundle.mainBundle().resourcePath!
 
         let pythonResources = "\(resourcePath)/Library/Python.framework/Resources"
-        let wpython_home = _Py_char2wchar(pythonResources, nil)
+        let wpython_home = Py_DecodeLocale(pythonResources, nil)
         Py_SetPythonHome(wpython_home);
     }
 
@@ -141,11 +141,11 @@ class PythonMacroEngine {
         let resourcePath = NSBundle.mainBundle().resourcePath!
 
         let wpath = Py_GetPath()
-        let c = _Py_wchar2char(wpath, nil)
+        let c = Py_EncodeLocale(wpath, nil)
         let path = String(UTF8String: c)!
 
         let newPath = "\(path):\(resourcePath)"
-        let wpythonPath = _Py_char2wchar(newPath, nil)
+        let wpythonPath = Py_DecodeLocale(newPath, nil)
         PySys_SetPath(wpythonPath)
     }
 
