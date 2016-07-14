@@ -63,12 +63,27 @@ class DailyProgress {
     /// A private method used to register the swift blocks with the
     /// PythonMacroEngine.
     private func setupPythonCallbacks() {
-        functions.append(PythonFunction(name: "getActiveCalories", callArgs: [], returnType: .Double, block: { Void -> AnyObject? in
+        functions.append(
+            PythonFunction(name: "getActiveCalories",
+                       callArgs: [],
+                     returnType: .Double,
+                          block:
+        {
+            Void -> AnyObject? in
+
             return self.activeCalories
         }))
         engine.callable?.registerFunction(functions.last!)
-        
-        functions.append(PythonFunction(name: "setActiveCalories", callArgs: [.Double], returnType: .Void, block: { (args) -> AnyObject? in
+
+
+        functions.append(
+            PythonFunction(name: "setActiveCalories",
+                       callArgs: [.Double],
+                     returnType: .Void,
+                          block:
+        {
+            (args) -> AnyObject? in
+
             guard let newValue = args?[0] as? Double else { return nil }
             
             self.activeCalories = newValue
@@ -78,14 +93,29 @@ class DailyProgress {
         engine.callable?.registerFunction(functions.last!)
         
         
-        functions.append(PythonFunction(name: "getActivity", callArgs: [], returnType: .Double, block: { Void -> AnyObject? in
+        functions.append(
+            PythonFunction(name: "getActivity",
+                       callArgs: [],
+                     returnType: .Double,
+                          block:
+        {
+            Void -> AnyObject? in
+
             return self.activity
         }))
         engine.callable?.registerFunction(functions.last!)
-        
-        functions.append(PythonFunction(name: "setActivity", callArgs: [.Double], returnType: .Void, block: { (args) -> AnyObject? in
+
+
+        functions.append(
+            PythonFunction(name: "setActivity",
+                       callArgs: [.Double],
+                     returnType: .Void,
+                          block:
+        {
+            (args) -> AnyObject? in
+
             guard let newValue = args?[0] as? Double else { return nil }
-            
+
             self.activity = newValue
             
             return nil
@@ -93,12 +123,27 @@ class DailyProgress {
         engine.callable?.registerFunction(functions.last!)
         
         
-        functions.append(PythonFunction(name: "getStandup", callArgs: [], returnType: .Double, block: { Void -> AnyObject? in
+        functions.append(
+            PythonFunction(name: "getStandup",
+                       callArgs: [],
+                     returnType: .Double,
+                          block:
+        {
+            Void -> AnyObject? in
+
             return self.standup
         }))
         engine.callable?.registerFunction(functions.last!)
-        
-        functions.append(PythonFunction(name: "setStandup", callArgs: [.Double], returnType: .Void, block: { (args) -> AnyObject? in
+
+
+        functions.append(
+            PythonFunction(name: "setStandup",
+                       callArgs: [.Double],
+                     returnType: .Void,
+                          block:
+        {
+            (args) -> AnyObject? in
+
             guard let newValue = args?[0] as? Double else { return nil }
             
             self.standup = newValue
