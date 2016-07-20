@@ -69,7 +69,6 @@ class ActivityViewController: UIViewController, DailyProgressDelegate {
 
 
     @IBAction func callPythonMacro(sender: UIButton) {
-        print(sender.tag)
         let r: String? = macros[sender.tag].call()
         messageLabel.text = r
     }
