@@ -218,7 +218,7 @@
             </objects>
             <point key="canvasLocation" x="673" y="426"/>
         </scene>
-        <!--Edit Macro View Controller-->
+        <!--Edit Macros-->
         <scene sceneID="zFY-2n-uLh">
             <objects>
                 <viewController id="Exe-oU-8Lk" customClass="EditMacroViewController" customModule="PythonMacros" customModuleProvider="target" sceneMemberID="viewController">
@@ -272,14 +272,22 @@
                             <constraint firstItem="oad-NA-NT3" firstAttribute="leading" secondItem="G31-gx-UCb" secondAttribute="leadingMargin" id="daa-rB-EpO"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Edit Macros" id="0X0-5F-90w">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="DsV-Nc-1Ld">
+                            <connections>
+                                <segue destination="tsC-bm-Y0h" kind="unwind" unwindAction="unwindFromEditMacro:" id="brK-vU-727"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="codeView" destination="oad-NA-NT3" id="WOb-sE-eln"/>
                         <outlet property="macroSelector" destination="i9v-28-rim" id="lFk-ml-F08"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P7m-6E-brL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="tsC-bm-Y0h" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1456" y="426"/>
+            <point key="canvasLocation" x="1462" y="426"/>
         </scene>
     </scenes>
 </document>
