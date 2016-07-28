@@ -88,5 +88,9 @@ class ActivityViewController: UIViewController, DailyProgressDelegate {
     func standupUpdate(newValue: Double) {
         innerProgressView.progress = CGFloat(newValue)
     }
+
+    @IBAction func unwindFromEditMacro(segue: UIStoryboardSegue) {
+        print("Unwound")
+    }
 }
 
