@@ -24,3 +24,5 @@ Or, you can download the [Python-Apple-Support.](https://github.com/pybee/Python
 build the 3.5 version of these frameworks.
 
 Copy the four frameworks into the root directory of this project.  This application will compile with one warning when targeting the simulator.  The warning is not present when targeting a device.
+
+*Rodger Higgins is the founder of [Spazstik Software, LLC](http://www.spazstik-software.com).  He has created [StackCalc, The Visual Touch Calculator](http://www.spazstik-software.com/products/stackcalc) and [SPZTracker](http://www.spazstik-software.com/products/spztracker.ios).*
