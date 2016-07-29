@@ -4,7 +4,7 @@ Last month I published a article on how to use [ JavascriptCore ](http://www.spa
 
 A better choice to me would be a language like Python.  Being curious, I wondered what it would take to to use Python.
 
-This is a demo application that accompanies the blog article [ How To: Support User Editable Python Macros in A iOS Application ](http://www.spazstik-software.com/blog/article/how-to-example-extend-a-ios-using-javascriptcore-as-a-macro-engine)
+This is a demo application that accompanies the blog article [ How To: Support User Editable Python Macros In a iOS Application ](http://www.spazstik-software.com/blog/article/how-to-support-user-editable-python-macros-in-a-ios-application)
 
 
 ## Building Instructions
