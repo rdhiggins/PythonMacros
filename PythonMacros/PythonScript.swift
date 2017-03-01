@@ -67,7 +67,7 @@ class PythonScript {
     /// returns: A bool indicating the success or failure of running
     /// the script in CPython runtime.  Only returns false if there is nothing
     /// in the python property
-    func run(engine: PythonMacroEngine) -> Bool {
+    func run(_ engine: PythonMacroEngine) -> Bool {
         if let python = self.python {
             engine.run(python)
             
@@ -82,8 +82,8 @@ class PythonScript {
     /// already loaded in memory.
     ///
     /// - paramter name: A string containing the name of the python script.
-    class func createMemoryScript(name: String, python: String) -> PythonScript {
-        let ps = PythonScript(name: name, python: python, location: .Memory)
+    class func createMemoryScript(_ name: String, python: String) -> PythonScript {
+        let ps = PythonScript(name: name, python: python, location: .memory)
 
         return ps
     }
@@ -94,8 +94,8 @@ class PythonScript {
     /// - parameter name:  A filename (minus extension) of the script to load
     /// the resource bundle.
     /// - returns: A PythonScript on successfully loading the specified script.
-    class func loadResourceScript(name: String) -> PythonScript? {
-        return PythonScriptDirectory.sharedInstance.load(name, location: .Resource)
+    class func loadResourceScript(_ name: String) -> PythonScript? {
+        return PythonScriptDirectory.sharedInstance.load(name, location: .resource)
     }
 
 
@@ -105,8 +105,8 @@ class PythonScript {
     /// - parameter name:  A filename (minus extension) of the script to load
     /// the resource bundle.
     /// - returns: A PythonScript on successfully loading the specified script.
-    class func loadUserScript(name: String) -> PythonScript? {
-        return PythonScriptDirectory.sharedInstance.load(name, location: .Document)
+    class func loadUserScript(_ name: String) -> PythonScript? {
+        return PythonScriptDirectory.sharedInstance.load(name, location: .document)
     }
 }
 

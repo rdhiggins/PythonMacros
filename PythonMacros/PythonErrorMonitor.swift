@@ -24,12 +24,36 @@
 
 
 import UIKit
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 /// A class used by PythonMacroEngine to monitor the runtime for any errors.
 /// A UIAlertController is displayed if any error are encounters.
 class PythonErrorMonitor {
 
-    private let engine: PythonMacroEngine
+    fileprivate let engine: PythonMacroEngine
 
     init(engine: PythonMacroEngine) {
         self.engine = engine
@@ -47,8 +71,8 @@ class PythonErrorMonitor {
             let message = engine.output!.stdError
             engine.output!.stdError = ""
 
-            let alert = UIAlertController(title: "Python Script Error", message: message, preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+            let alert = UIAlertController(title: "Python Script Error", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
 
             alert.show(true)
         }

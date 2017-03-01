@@ -44,9 +44,9 @@ private let alphabet = "abcdefghijklmnopqrstuvwxyz"
 ///     return call('functionName',(a,b...))
 ///
 class PythonFunctionBridge {
-    private var engine: PythonMacroEngine?
+    fileprivate var engine: PythonMacroEngine?
     
-    private var pythonFunctions: [String: PythonFunction] = [:]
+    fileprivate var pythonFunctions: [String: PythonFunction] = [:]
     
     init(engine: PythonMacroEngine) {
         self.engine = engine
@@ -64,15 +64,15 @@ class PythonFunctionBridge {
     ///
     /// - parameter function: A PythonFunction reference to register.
     /// - returns: A bool indicating a success
-    func registerFunction(function: PythonFunction) -> Bool {
+    func registerFunction(_ function: PythonFunction) -> Bool {
         var ret = false
         
         if pythonFunctions[function.name] == nil {
             pythonFunctions[function.name] = function
             
             let prototype = prototypeString(function)
-            let script = PythonScript(name: function.name, python: prototype, location: .Memory)
-            script.run(engine!)
+            let script = PythonScript(name: function.name, python: prototype, location: .memory)
+            _ = script.run(engine!)
             
             ret = true
         }
@@ -85,16 +85,16 @@ class PythonFunctionBridge {
     /// defined in the ios python module.  This block performs the steps
     /// necessary for the block to be called with the proper parameters and
     /// return the required value.
-    private func setupHook() {
-        ios_process_block = { py_obj -> UnsafeMutablePointer<PyObject> in
-            let (oname, tuple) = self.parseArgs(py_obj)
-            guard let name = oname where tuple != nil else {
+    fileprivate func setupHook() {
+        ios_process_block = { py_obj -> UnsafeMutablePointer<PyObject>? in
+            let (oname, tuple) = self.parseArgs(py_obj!)
+            guard let name = oname, tuple != nil else {
                 PyErr_SetString(PyExc_TypeError, "Called with wrong parameters")
                 return nil
             }
 
             if let f = self.pythonFunctions[name] {
-                let args = f.parseArgs(tuple)
+                let args = f.parseArgs(tuple!)
 
                 if args.count == f.callArgs.count {
                     let rv = f.call(args)
@@ -118,14 +118,14 @@ class PythonFunctionBridge {
     /// - returns: A swift tuple that contains the name of the swift block
     /// and another UnsafeMutablePointer<PyObject> to the python tuple
     /// containing the arguments for the swift block
-    private func parseArgs(args: UnsafeMutablePointer<PyObject>) -> (String?, UnsafeMutablePointer<PyObject>) {
-        let buffer: UnsafeMutablePointer<UnsafeMutablePointer<Int8>> = UnsafeMutablePointer<UnsafeMutablePointer<Int8>>.alloc(1)
-        let tuple: UnsafeMutablePointer<UnsafeMutablePointer<PyObject>> = UnsafeMutablePointer<UnsafeMutablePointer<PyObject>>.alloc(1)
-        let va_list: [CVarArgType] = [buffer, tuple]
+    fileprivate func parseArgs(_ args: UnsafeMutablePointer<PyObject>) -> (String?, UnsafeMutablePointer<PyObject>?) {
+        let buffer: UnsafeMutablePointer<UnsafeMutablePointer<Int8>> = UnsafeMutablePointer<UnsafeMutablePointer<Int8>>.allocate(capacity: 1)
+        let tuple: UnsafeMutablePointer<UnsafeMutablePointer<PyObject>> = UnsafeMutablePointer<UnsafeMutablePointer<PyObject>>.allocate(capacity: 1)
+        let va_list: [CVarArg] = [buffer, tuple]
         
-        let ret = withVaList(va_list) { p -> (String?, UnsafeMutablePointer<PyObject>) in
+        let ret = withVaList(va_list) { p -> (String?, UnsafeMutablePointer<PyObject>?) in
             if PyArg_VaParse(args, "s|O", p) != 0 {
-                return (String(UTF8String: buffer.memory), tuple.memory)
+                return (String(validatingUTF8: buffer.pointee), tuple.pointee)
             }
 
             return (nil, nil)
@@ -143,7 +143,7 @@ class PythonFunctionBridge {
     /// prototype for.
     /// - returns: A python script that defines the function for the swift
     /// block.
-    private func prototypeString(function: PythonFunction) -> String {
+    fileprivate func prototypeString(_ function: PythonFunction) -> String {
         let argNames: [String] = generateArgNames(function.callArgs.count)
         let argTypes: [String] = generateArgTypes(function.callArgs)
         let retType: String? = pythonType(function.returnType)
@@ -153,7 +153,7 @@ class PythonFunctionBridge {
             a.append("\(argNames[i]): \(argTypes[i])")
         }
         
-        var def: String = "def \(function.name)(\(a.joinWithSeparator(", ")))"
+        var def: String = "def \(function.name)(\(a.joined(separator: ", ")))"
         var body: String = "ios.call('\(function.name)', ("
         for an in argNames {
             body += "\(an), "
@@ -179,13 +179,13 @@ class PythonFunctionBridge {
     /// - parameter numArgs:  Number of arguments for the function
     /// - returns: Array of strings that contain a argument name for
     /// each argument.
-    private func generateArgNames(numArgs: Int) -> [String] {
+    fileprivate func generateArgNames(_ numArgs: Int) -> [String] {
         var ret: [String] = []
         
         var index = alphabet.characters.startIndex
         for _ in 0..<numArgs {
             ret.append(String(alphabet.characters[index]))
-            index = index.successor()
+            index = alphabet.characters.index(after: index)
         }
         
         return ret
@@ -198,7 +198,7 @@ class PythonFunctionBridge {
     /// function
     /// - returns Array of strings containing the types to use for the
     /// functions argument.
-    private func generateArgTypes(args: [PythonFunction.PythonTypes]) -> [String] {
+    fileprivate func generateArgTypes(_ args: [PythonFunction.PythonTypes]) -> [String] {
         var ret: [String] = []
         
         for arg in args {
@@ -210,7 +210,7 @@ class PythonFunctionBridge {
     
     
     /// A private method used to convert a PythonTypes enum to a string.
-    private func pythonType(type: PythonFunction.PythonTypes) -> String? {
+    fileprivate func pythonType(_ type: PythonFunction.PythonTypes) -> String? {
         switch type {
         case .Float, .Double:
             return "float"

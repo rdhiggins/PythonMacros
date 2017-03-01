@@ -30,9 +30,9 @@ import UIKit
 /// of macros in CPython
 class ActivityViewController: UIViewController, DailyProgressDelegate {
 
-    private let dailyProgress: DailyProgress = DailyProgress.sharedInstance
+    fileprivate let dailyProgress: DailyProgress = DailyProgress.sharedInstance
     
-    private var macros: [PythonMacro] = []
+    fileprivate var macros: [PythonMacro] = []
 
     @IBOutlet weak var outerProgressView: CustomProgressView!
     @IBOutlet weak var middleProgressView: CustomProgressView!
@@ -51,7 +51,7 @@ class ActivityViewController: UIViewController, DailyProgressDelegate {
 
     /// A private method used to setup the PythonMacros that will get called
     /// when the user selects one of four buttons displayed.
-    private func setupMacros() {
+    fileprivate func setupMacros() {
         macros.append(PythonMacro(filename: "even_more", functionName: "evenMore"))
         macros.append(PythonMacro(filename: "more", functionName: "more"))
         macros.append(PythonMacro(filename: "less", functionName: "less"))
@@ -59,37 +59,37 @@ class ActivityViewController: UIViewController, DailyProgressDelegate {
     }
 
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EditMacros" {
-            if let emvc = segue.destinationViewController as? EditMacroViewController {
+            if let emvc = segue.destination as? EditMacroViewController {
                 emvc.macros = macros
             }
         }
     }
 
 
-    @IBAction func callPythonMacro(sender: UIButton) {
+    @IBAction func callPythonMacro(_ sender: UIButton) {
         let r: String? = macros[sender.tag].call()
         messageLabel.text = r
     }
 
 
 
-    func activeCalorieUpdate(newValue: Double) {
+    func activeCalorieUpdate(_ newValue: Double) {
         outerProgressView.progress = CGFloat(newValue)
     }
 
 
-    func activityUpdate(newValue: Double) {
+    func activityUpdate(_ newValue: Double) {
         middleProgressView.progress = CGFloat(newValue)
     }
 
 
-    func standupUpdate(newValue: Double) {
+    func standupUpdate(_ newValue: Double) {
         innerProgressView.progress = CGFloat(newValue)
     }
 
-    @IBAction func unwindFromEditMacro(segue: UIStoryboardSegue) {
+    @IBAction func unwindFromEditMacro(_ segue: UIStoryboardSegue) {
         print("Unwound")
     }
 }

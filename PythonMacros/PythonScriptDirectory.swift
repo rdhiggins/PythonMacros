@@ -38,9 +38,9 @@ class PythonScriptDirectory {
     /// Property containing a delegate object reference
     var delegate: PythonScriptDictionaryDelegate?
     
-    private let fileManager = NSFileManager()
-    private let docURL: NSURL =
-        NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last!
+    fileprivate let fileManager = FileManager()
+    fileprivate let docURL: URL =
+        FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last!
 
     
     init() {
@@ -54,18 +54,18 @@ class PythonScriptDirectory {
         var s: [PythonScript] = []
         
         let options = [
-            NSURLNameKey,
-            NSURLIsDirectoryKey
+            URLResourceKey.nameKey,
+            URLResourceKey.isDirectoryKey
         ]
         
-        let files = try! fileManager.contentsOfDirectoryAtURL(docURL, includingPropertiesForKeys: options, options: .SkipsHiddenFiles)
-        let scripts = files.filter() { ($0.lastPathComponent?.hasSuffix(".py"))! }
+        let files = try! fileManager.contentsOfDirectory(at: docURL, includingPropertiesForKeys: options, options: .skipsHiddenFiles)
+        let scripts = files.filter() { ($0.lastPathComponent.hasSuffix(".py")) }
         
         for script in scripts {
-            guard let url = script.URLByDeletingPathExtension,
-                name = url.lastPathComponent else { continue }
+            let url = script.deletingPathExtension()
+            let name = url.lastPathComponent
 
-            s.append(PythonScript(name: name, python: nil, location: .Document))
+            s.append(PythonScript(name: name, python: nil, location: .document))
         }
         
         self.scripts = s
@@ -78,21 +78,21 @@ class PythonScriptDirectory {
     /// - parameter name: A string specifying the filename (without extension)
     /// of the python script to load
     /// - parameter location: Where to load the script from
-    func load(name: String, location: PythonScriptLocation) -> PythonScript? {
+    func load(_ name: String, location: PythonScriptLocation) -> PythonScript? {
         var ret: PythonScript?
         
         switch location {
-        case .Memory:
+        case .memory:
             print("Can not load a memory script")
             
-        case .Resource:
+        case .resource:
             if let python = loadResourcePython(name) {
-                ret  = PythonScript(name: name, python: python, location: .Resource)
+                ret  = PythonScript(name: name, python: python, location: .resource)
             }
             
-        case .Document:
+        case .document:
             if let python = loadUserPython(name) {
-                ret = PythonScript(name: name, python: python, location: .Document)
+                ret = PythonScript(name: name, python: python, location: .document)
             }
         }
         
@@ -106,19 +106,19 @@ class PythonScriptDirectory {
     /// A script that is currently in memory will get stored to the application's
     /// documents directory
     /// - returns: A bool indicating success of failure of the save.
-    func save(script: PythonScript) -> Bool {
+    func save(_ script: PythonScript) -> Bool {
         guard let location = script.location else { return false }
         var ret: Bool = false
         
         switch location {
-        case .Memory:
+        case .memory:
             ret = saveScript(script)
-            script.location = .Document
+            script.location = .document
             
-        case .Document:
+        case .document:
             ret = saveScript(script)
             
-        case .Resource:
+        case .resource:
             break
         }
         
@@ -136,32 +136,32 @@ class PythonScriptDirectory {
     /// documents directory.
     /// - returns: A bool indicating success of failure.  It will return false
     /// for scripts in memory or as part of the application's resource bundle
-    func delete(script: PythonScript) -> Bool {
+    func delete(_ script: PythonScript) -> Bool {
         guard let location = script.location,
-                    name = script.name else {
+                    let name = script.name else {
             return false
         }
         var ret: Bool = false
         
         switch location {
-        case .Memory:
+        case .memory:
             break
             
-        case .Resource:
+        case .resource:
             break
             
-        case .Document:
-            let url = docURL.URLByAppendingPathComponent("\(name).py")
+        case .document:
+            let url = docURL.appendingPathComponent("\(name).py")
             
             do {
-                try fileManager.removeItemAtURL(url)
+                try fileManager.removeItem(at: url)
                 ret = true
             } catch {}
         }
         
         if ret {
-            if let i = scripts.indexOf({ $0 == script }) {
-                scripts.removeAtIndex(i)
+            if let i = scripts.index(where: { $0 == script }) {
+                scripts.remove(at: i)
                 delegate?.scriptsUpdated()
             }
         }
@@ -177,16 +177,16 @@ class PythonScriptDirectory {
     /// - parameter script: The PythonScript reference to rename.  The
     /// object must have the new name in its name property.
     /// - returns: A bool indicating success
-    func rename(oldName: String, script: PythonScript) -> Bool {
-        guard script.location == .Document,
+    func rename(_ oldName: String, script: PythonScript) -> Bool {
+        guard script.location == .document,
             let newName = script.name else { return false }
         
         var ret: Bool = false
-        let oldUrl = docURL.URLByAppendingPathComponent("\(oldName).py")
-        let newUrl = docURL.URLByAppendingPathComponent("\(newName).py")
+        let oldUrl = docURL.appendingPathComponent("\(oldName).py")
+        let newUrl = docURL.appendingPathComponent("\(newName).py")
         
         do {
-            try fileManager.moveItemAtURL(oldUrl, toURL: newUrl)
+            try fileManager.moveItem(at: oldUrl, to: newUrl)
             ret = true
         } catch {
             print("error in rename")
@@ -200,17 +200,17 @@ class PythonScriptDirectory {
     /// memory scripts.
     ///
     /// - parameter script: The PythonScript reference to reload from storage.
-    func refresh(script: PythonScript) {
-        guard let location = script.location, name = script.name else { return }
+    func refresh(_ script: PythonScript) {
+        guard let location = script.location, let name = script.name else { return }
         
         switch location {
-        case .Memory:
+        case .memory:
             break
             
-        case .Resource:
+        case .resource:
             script.python = loadResourcePython(name)
             
-        case .Document:
+        case .document:
             script.python = loadUserPython(name)
         }
     }
@@ -220,14 +220,14 @@ class PythonScriptDirectory {
     ///
     /// - parameter script: A reference to a PythonScript object.
     /// - returns: A bool indicating success
-    private func saveScript(script: PythonScript) -> Bool {
+    fileprivate func saveScript(_ script: PythonScript) -> Bool {
         var ret: Bool = false
         
-        guard let name = script.name, python = script.python else {
+        guard let name = script.name, let python = script.python else {
             return ret
         }
         
-        let fileURL = docURL.URLByAppendingPathComponent("\(name).py")
+        let fileURL = docURL.appendingPathComponent("\(name).py")
         ret = savePython(python, url: fileURL)
         
         return ret
@@ -241,9 +241,9 @@ class PythonScriptDirectory {
     /// - parameter url: A NSURL reference that specifies the location
     /// to write to.
     /// - returns: A bool indicating the success of the operation
-    private func savePython(python: String, url: NSURL) -> Bool {
+    fileprivate func savePython(_ python: String, url: URL) -> Bool {
         do {
-            try python.writeToURL(url, atomically: true, encoding: NSUTF8StringEncoding)
+            try python.write(to: url, atomically: true, encoding: String.Encoding.utf8)
             return true
         } catch {}
         
@@ -257,11 +257,11 @@ class PythonScriptDirectory {
     /// - parameter url: A NSURL reference of the file to load the script from.
     /// - returns: A optional string containing the script if the operation
     /// was successful
-    private func loadPython(url: NSURL) -> String? {
+    fileprivate func loadPython(_ url: URL) -> String? {
         var ret: String?
         
         do {
-            ret = try String(contentsOfURL: url)
+            ret = try String(contentsOf: url)
         } catch {}
         
         return ret
@@ -274,11 +274,11 @@ class PythonScriptDirectory {
     ///
     /// - parameter name: The proposed script name
     /// - returns: A unique string name
-    func generateUniqueName(name: String) -> String {
+    func generateUniqueName(_ name: String) -> String {
         var uniqueName = name
         var index = 1
         
-        while scripts.indexOf({ $0.name == uniqueName }) != nil
+        while scripts.index(where: { $0.name == uniqueName }) != nil
         {
             uniqueName = "\(name) \(index)"
             index += 1
@@ -294,8 +294,8 @@ class PythonScriptDirectory {
     /// - parameter name: The filename (minus extension) to load
     /// - returns: A optional string containing the script if the operation
     /// was successful
-    private func loadResourcePython(name: String) -> String? {
-        guard let url = NSBundle.mainBundle().URLForResource(name, withExtension: "py") else {
+    fileprivate func loadResourcePython(_ name: String) -> String? {
+        guard let url = Bundle.main.url(forResource: name, withExtension: "py") else {
             print("Failed to find python script in mainBindle: \(name)")
             fatalError()
         }
@@ -310,8 +310,8 @@ class PythonScriptDirectory {
     /// - parameter name: The filename (minus extension) to load
     /// - returns: A optional string containing the script if the operation
     /// was successful
-    private func loadUserPython(name: String) -> String? {
-        let url = docURL.URLByAppendingPathComponent("\(name).py")
+    fileprivate func loadUserPython(_ name: String) -> String? {
+        let url = docURL.appendingPathComponent("\(name).py")
         
         return loadPython(url)
     }

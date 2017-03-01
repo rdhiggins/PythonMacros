@@ -22,7 +22,7 @@ extension UIAlertController {
     var alertWindow: UIWindow {
         get {
             return associatedObject(self, key: &alertWindowKey) {
-                return UIWindow(frame: UIScreen.mainScreen().bounds)
+                return UIWindow(frame: UIScreen.main.bounds)
             }
         }
 
@@ -36,22 +36,22 @@ extension UIAlertController {
     }
 
 
-    func show(animated: Bool) {
+    func show(_ animated: Bool) {
         let window = alertWindow
         window.rootViewController = UIViewController()
 
-        window.tintColor = UIApplication.sharedApplication().delegate?.window!!.tintColor
-        let topWindow = UIApplication.sharedApplication().windows.last
+        window.tintColor = UIApplication.shared.delegate?.window!!.tintColor
+        let topWindow = UIApplication.shared.windows.last
         window.windowLevel = (topWindow?.windowLevel)! + 1
 
         window.makeKeyAndVisible()
-        window.rootViewController?.presentViewController(self, animated: animated, completion: nil)
+        window.rootViewController?.present(self, animated: animated, completion: nil)
     }
 
 
-    public override func viewDidDisappear(animated: Bool) {
+    open override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
 
-        self.alertWindow.hidden = true
+        self.alertWindow.isHidden = true
     }
 }

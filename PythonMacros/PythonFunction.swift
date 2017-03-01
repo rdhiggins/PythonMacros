@@ -26,7 +26,7 @@
 import Foundation
 
 
-typealias PythonFunctionBlock = [AnyObject]? -> AnyObject?
+typealias PythonFunctionBlock = ([AnyObject]?) -> AnyObject?
 
 
 /// Class used to represent a python callable swift block.
@@ -68,7 +68,7 @@ class PythonFunction {
     /// type of the functions arguments
     /// - parameter returnType: The PythonType of the return value
     /// - parameter block: The swift block to call from python
-    init(name: String, callArgs: [PythonTypes], returnType: PythonTypes, block: PythonFunctionBlock) {
+    init(name: String, callArgs: [PythonTypes], returnType: PythonTypes, block: @escaping PythonFunctionBlock) {
         self.name = name
         self.callArgs = callArgs
         self.returnType = returnType
@@ -82,7 +82,7 @@ class PythonFunction {
     /// to the swift block
     /// - returns: The object (if any) to be passwed back to the python
     /// runtime.
-    func call(args: [AnyObject]?) -> AnyObject? {
+    func call(_ args: [AnyObject]?) -> AnyObject? {
         return block(args)
     }
 
@@ -94,43 +94,43 @@ class PythonFunction {
     /// - parameter tuple: The UnsafeMutablePointer<PyObject> of the argument
     /// tuple in python.
     /// - returns: Array of swift values that will be passed to the swift block
-    func parseArgs(tuple: UnsafeMutablePointer<PyObject>) -> [AnyObject] {
+    func parseArgs(_ tuple: UnsafeMutablePointer<PyObject>) -> [AnyObject] {
         var ret: [AnyObject] = []
         var index: Int = 0
 
         for arg in callArgs {
-            let obj: UnsafeMutablePointer<PyObject> = PyTuple_GetItem(tuple, index)
+            let obj: UnsafeMutablePointer<PyObject>? = PyTuple_GetItem(tuple, index)
 
             if obj != nil {
                 switch arg {
                 case .Double:
                     if PyNumber_Check(obj) != 0 {
-                        ret.append(PyFloat_AsDouble(obj))
+                        ret.append(PyFloat_AsDouble(obj) as AnyObject)
                     } else {
                         PyErr_SetString(PyExc_TypeError, "Expected float as param \(index+1)")
                     }
                 case .Float:
                     if PyNumber_Check(obj) != 0 {
-                        ret.append(Float(PyFloat_AsDouble(obj)))
+                        ret.append(Float(PyFloat_AsDouble(obj)) as AnyObject)
                     } else {
                         PyErr_SetString(PyExc_TypeError, "Expected float as param \(index+1)")
                     }
                 case .String:
-                    let flags = obj.memory.ob_type.memory.tp_flags
-                    if  flags & Py_TPFLAGS_UNICODE_SUBCLASS != 0 {
-                        ret.append(String(UTF8String: PyUnicode_AsUTF8AndSize(obj, nil))!)
+                    let flags = obj?.pointee.ob_type.pointee.tp_flags
+                    if  flags! & Py_TPFLAGS_UNICODE_SUBCLASS != 0 {
+                        ret.append(String(validatingUTF8: PyUnicode_AsUTF8AndSize(obj, nil))! as AnyObject)
                     } else {
                         PyErr_SetString(PyExc_TypeError, "Expected string as param \(index+1)")
                     }
                 case .Int:
                     if PyNumber_Check(obj) != 0 {
-                        ret.append(PyLong_AsLong(obj))
+                        ret.append(PyLong_AsLong(obj) as AnyObject)
                     } else {
                         PyErr_SetString(PyExc_TypeError, "Expected int as param \(index+1)")
                     }
                 case .Long:
                     if PyNumber_Check(obj) != 0 {
-                        ret.append(PyLong_AsLong(obj))
+                        ret.append(PyLong_AsLong(obj) as AnyObject)
                     } else {
                         PyErr_SetString(PyExc_TypeError, "Expected long as param \(index+1)")
                     }
@@ -153,7 +153,7 @@ class PythonFunction {
     /// - parameter returnValue: The return value to encode
     /// - returns: A UnsafeMutablePointer<PyObject> that is the value encoded
     /// into the proper python object
-    func encodeReturn(returnValue: AnyObject?) -> UnsafeMutablePointer<PyObject> {
+    func encodeReturn(_ returnValue: AnyObject?) -> UnsafeMutablePointer<PyObject>? {
         switch returnType {
         case .Double:
             guard let d = returnValue as? Double else {
@@ -198,8 +198,8 @@ class PythonFunction {
     /// - parameter value: The swift value to encode into the python runtime
     /// - returns: A UnsafeMutablePointer<PyObject> of the encoded
     /// PyObject.
-    private func createPythonReturnObject<ValueType: CVarArgType>(value: ValueType) -> UnsafeMutablePointer<PyObject> {
-        let args: [CVarArgType] = [value]
+    fileprivate func createPythonReturnObject<ValueType: CVarArg>(_ value: ValueType) -> UnsafeMutablePointer<PyObject> {
+        let args: [CVarArg] = [value]
         
         return withVaList(args) { va_list in
             return Py_VaBuildValue(returnType.rawValue, va_list)

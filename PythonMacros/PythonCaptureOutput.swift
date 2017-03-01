@@ -35,15 +35,15 @@ import Foundation
 /// objects a queryied for any text, which is then appended to the stdOutput or
 /// stdError buffers.
 class PythonCaptureOutput {
-    private let kValueKey = "value"
-    private let kCaptureScriptName = "capture_output"
-    private let kPythonStandardOutputName = "standardOutput"
-    private let kPythonStandardErrorName = "standardError"
+    fileprivate let kValueKey = "value"
+    fileprivate let kCaptureScriptName = "capture_output"
+    fileprivate let kPythonStandardOutputName = "standardOutput"
+    fileprivate let kPythonStandardErrorName = "standardError"
     
-    private var module: PythonObject?
-    private var standardOutput: PythonObject?
-    private var standardError: PythonObject?
-    private var engine: PythonMacroEngine!
+    fileprivate var module: PythonObject?
+    fileprivate var standardOutput: PythonObject?
+    fileprivate var standardError: PythonObject?
+    fileprivate var engine: PythonMacroEngine!
     
     
     /// Property that contains the standard output from CPython
@@ -97,7 +97,7 @@ class PythonCaptureOutput {
     /// - parameter object: A PythonObject reference to the python object used
     /// to capture the stream output.
     /// - parameter channel: The String buffer to append any new output to.
-    private func refreshChannel(object: PythonObject, inout channel: String) {
+    fileprivate func refreshChannel(_ object: PythonObject, channel: inout String) {
         // This queries the python object for its new content
         guard let output = object.getAttrString(kValueKey) else {
             return
@@ -118,9 +118,9 @@ class PythonCaptureOutput {
     ///
     /// The two python objects are then looked up and references
     /// are stored so the the stream output can be queried.
-    private func loadCaptureScript() {
+    fileprivate func loadCaptureScript() {
         guard let module = self.module,
-            captureScript = PythonScriptDirectory.sharedInstance.load(kCaptureScriptName, location: .Resource) else {
+            let captureScript = PythonScriptDirectory.sharedInstance.load(kCaptureScriptName, location: .resource) else {
                 
             print("No module reference")
             fatalError()
@@ -153,7 +153,7 @@ extension PythonCaptureOutput: CustomStringConvertible, CustomDebugStringConvert
     }
 
     
-    private func customDescription() -> String {
+    fileprivate func customDescription() -> String {
         return "Python StandardOutput: \(stdOutput)\nPython StandardError: \(stdError)\n"
     }
 }

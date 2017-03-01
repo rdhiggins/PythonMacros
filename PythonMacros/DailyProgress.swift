@@ -23,8 +23,8 @@ class DailyProgress {
     /// Class property used to retrieve the singleton object
     static var sharedInstance: DailyProgress = DailyProgress()
     
-    private var engine: PythonMacroEngine = PythonMacroEngine.sharedInstance
-    private var functions: [PythonFunction] = []
+    fileprivate var engine: PythonMacroEngine = PythonMacroEngine.sharedInstance
+    fileprivate var functions: [PythonFunction] = []
 
 
     /// Property containing the current value for the daily active calories
@@ -62,7 +62,7 @@ class DailyProgress {
 
     /// A private method used to register the swift blocks with the
     /// PythonMacroEngine.
-    private func setupPythonCallbacks() {
+    fileprivate func setupPythonCallbacks() {
         functions.append(
             PythonFunction(name: "getActiveCalories",
                        callArgs: [],
@@ -71,9 +71,9 @@ class DailyProgress {
         {
             Void -> AnyObject? in
 
-            return self.activeCalories
+            return self.activeCalories as AnyObject!
         }))
-        engine.callable?.registerFunction(functions.last!)
+        _ = engine.callable?.registerFunction(functions.last!)
 
 
         functions.append(
@@ -90,7 +90,7 @@ class DailyProgress {
             
             return nil
         }))
-        engine.callable?.registerFunction(functions.last!)
+        _ = engine.callable?.registerFunction(functions.last!)
         
         
         functions.append(
@@ -101,9 +101,9 @@ class DailyProgress {
         {
             Void -> AnyObject? in
 
-            return self.activity
+            return self.activity as AnyObject!
         }))
-        engine.callable?.registerFunction(functions.last!)
+        _ = engine.callable?.registerFunction(functions.last!)
 
 
         functions.append(
@@ -120,7 +120,7 @@ class DailyProgress {
             
             return nil
         }))
-        engine.callable?.registerFunction(functions.last!)
+        _ = engine.callable?.registerFunction(functions.last!)
         
         
         functions.append(
@@ -131,9 +131,9 @@ class DailyProgress {
         {
             Void -> AnyObject? in
 
-            return self.standup
+            return self.standup as AnyObject!
         }))
-        engine.callable?.registerFunction(functions.last!)
+        _ = engine.callable?.registerFunction(functions.last!)
 
 
         functions.append(
@@ -150,13 +150,13 @@ class DailyProgress {
             
             return nil
         }))
-        engine.callable?.registerFunction(functions.last!)
+        _ = engine.callable?.registerFunction(functions.last!)
     }
 }
 
 
 protocol DailyProgressDelegate {
-    func activeCalorieUpdate(newValue: Double)
-    func activityUpdate(newValue: Double)
-    func standupUpdate(newValue: Double)
+    func activeCalorieUpdate(_ newValue: Double)
+    func activityUpdate(_ newValue: Double)
+    func standupUpdate(_ newValue: Double)
 }

@@ -63,11 +63,11 @@ class PythonMacro {
     /// A private method used to load the macro into the CPython
     /// runtime.  It also store a reference to the loaded PyObject
     /// for the macro
-    private func setupMacro() {
+    fileprivate func setupMacro() {
         guard let script = self.script,
-            name = functionName else { return }
+            let name = functionName else { return }
         
-        script.run()
+        _ = script.run()
         
         object = PythonMacroEngine.sharedInstance.lookupObject(name)
     }
@@ -87,7 +87,7 @@ class PythonMacro {
     ///
     /// - parameters args: A CVarArgType array of the arguments to pass
     /// to the macro.
-    private func buildArgumentsString(args: [CVarArgType]) -> String {
+    fileprivate func buildArgumentsString(_ args: [CVarArg]) -> String {
         var ret = "("
         
         for arg in args {
@@ -113,8 +113,8 @@ class PythonMacro {
     ///
     /// - parameter args: A CVarArgType array of the arguments to pass
     /// to the python macro
-    private func call_va(args: [CVarArgType]) -> PythonObject {
-        var rv: UnsafeMutablePointer<PyObject> = nil
+    fileprivate func call_va(_ args: [CVarArg]) -> PythonObject {
+        var rv: UnsafeMutablePointer<PyObject>? = nil
         
         withVaList(args) { p in
             let a = Py_VaBuildValue(buildArgumentsString(args), p)
@@ -124,7 +124,7 @@ class PythonMacro {
         }
 
         PythonMacroEngine.sharedInstance.checkEngineStatus()
-        return PythonObject(object: rv)
+        return PythonObject(object: rv!)
     }
 
     
@@ -132,8 +132,8 @@ class PythonMacro {
     ///
     /// - parameter args: A CVarArgType array of the arguments to pass
     /// to the python macro
-    func call(args: CVarArgType...) {
-        self.call_va(args)
+    func call(_ args: CVarArg...) {
+        _ = self.call_va(args)
     }
 
     
@@ -142,7 +142,7 @@ class PythonMacro {
     /// - parameter args: A CVarArgType array of the arguments to pass
     /// to the python macro
     /// - returns: A double from the python macro
-    func call(args: CVarArgType...) -> Double {
+    func call(_ args: CVarArg...) -> Double {
         return self.call_va(args).toDouble()
     }
     
@@ -152,7 +152,7 @@ class PythonMacro {
     /// - parameter args: A CVarArgType array of the arguments to pass
     /// to the python macro
     /// - returns: A Float from the python macro
-    func call(args: CVarArgType...) -> Float {
+    func call(_ args: CVarArg...) -> Float {
         return self.call_va(args).toFloat()
     }
     
@@ -162,7 +162,7 @@ class PythonMacro {
     /// - parameter args: A CVarArgType array of the arguments to pass
     /// to the python macro
     /// - returns: A optional string from the python macro
-    func call(args: CVarArgType...) -> String? {
+    func call(_ args: CVarArg...) -> String? {
         return self.call_va(args).toString()
     }
     
@@ -172,7 +172,7 @@ class PythonMacro {
     /// - parameter args: A CVarArgType array of the arguments to pass
     /// to the python macro
     /// - returns: A Double from the python macro
-    func call(args: CVarArgType...) -> Int {
+    func call(_ args: CVarArg...) -> Int {
         return self.call_va(args).toInt()
     }
 }

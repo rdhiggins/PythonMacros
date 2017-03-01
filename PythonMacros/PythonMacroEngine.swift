@@ -45,7 +45,7 @@ class PythonMacroEngine {
     /// A private property that contains the ref to the __main__ module
     /// object.  This is used to lookup objects that are loaded into the
     /// runtime.
-    private var mainModule: PythonObject!
+    fileprivate var mainModule: PythonObject!
     
     
     /// Property that references the object that bridges swift blocks to
@@ -84,7 +84,7 @@ class PythonMacroEngine {
     /// A method used to execute a Python script in CPython.
     ///
     /// - parameter script:   The Python script to execute
-    func run(script: String) {
+    func run(_ script: String) {
         PyRun_SimpleStringFlags(script, nil)
 
         checkEngineStatus()
@@ -107,17 +107,17 @@ class PythonMacroEngine {
     /// Method used to lookup a Python object in the __main__ module.
     ///
     /// - parameter objectName: String containing the Python objects name
-    func lookupObject(objectName: String) -> PythonObject? {
+    func lookupObject(_ objectName: String) -> PythonObject? {
         guard let mm = mainModule else { return nil }
         
         let p = PyObject_GetAttrString(mm.object, objectName)
         
-        return PythonObject(object: p)
+        return PythonObject(object: p!)
     }
 
     
     /// A private method used to register custom modules with CPython.
-    private func setupExtensions() {
+    fileprivate func setupExtensions() {
         init_ios_module()
     }
 
@@ -126,8 +126,8 @@ class PythonMacroEngine {
     /// This is currently the application bundle.  The big ticket item is a zip
     /// file containing the modules that CPython needs.  This is setup through
     /// a custom puild phace script.
-    private func setupHome() {
-        let resourcePath = NSBundle.mainBundle().resourcePath!
+    fileprivate func setupHome() {
+        let resourcePath = Bundle.main.resourcePath!
 
         let pythonResources = "\(resourcePath)/Library/Python.framework/Resources"
         let wpython_home = Py_DecodeLocale(pythonResources, nil)
@@ -137,12 +137,12 @@ class PythonMacroEngine {
 
     /// A private method used to setup the search path that CPython uses to find
     /// scripts
-    private func setupPath() {
-        let resourcePath = NSBundle.mainBundle().resourcePath!
+    fileprivate func setupPath() {
+        let resourcePath = Bundle.main.resourcePath!
 
         let wpath = Py_GetPath()
         let c = Py_EncodeLocale(wpath, nil)
-        let path = String(UTF8String: c)!
+        let path = String(validatingUTF8: c!)!
 
         let newPath = "\(path):\(resourcePath)"
         let wpythonPath = Py_DecodeLocale(newPath, nil)
@@ -152,15 +152,15 @@ class PythonMacroEngine {
     
     /// A private setup method used to lookup the __main__ module and store
     /// a reference to the mainModule property
-    private func setupMain() {
+    fileprivate func setupMain() {
         let module = PyImport_AddModule("__main__")
-        mainModule = PythonObject(object: module)
+        mainModule = PythonObject(object: module!)
         Py_DecRef(module)
     }
     
     /// A private method used to setup the Python function bridge.  This object
     /// is used to allow swift blocks to be callable by python.
-    private func setupFunctionBridge() {
+    fileprivate func setupFunctionBridge() {
         callable = PythonFunctionBridge(engine: self)
     }
 }
@@ -179,7 +179,7 @@ extension PythonMacroEngine: CustomStringConvertible, CustomDebugStringConvertib
     }
     
     
-    private func customDescription() -> String {
+    fileprivate func customDescription() -> String {
         return "PythonMacroEngine(\(self))"
     }
 }

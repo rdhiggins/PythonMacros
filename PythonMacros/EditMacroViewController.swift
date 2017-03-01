@@ -33,7 +33,7 @@ class EditMacroViewController: UIViewController {
     }
 
 
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
         saveMacro(selectedMacroIndex)
@@ -46,16 +46,16 @@ class EditMacroViewController: UIViewController {
 
 
     /// A private method used to setup custom attributes for the codeview.
-    private func setupCodeView() {
-        self.codeView.backgroundColor = SyntaxHighlightThemes.Default.background
-        self.codeView.textColor = SyntaxHighlightThemes.Default.plain
-        self.codeView.gutterBackgroundColor = SyntaxHighlightThemes.Default.gutterBackground
-        self.codeView.gutterBorderColor = SyntaxHighlightThemes.Default.gutterBorder
-        self.codeView.gutterTextColor = SyntaxHighlightThemes.Default.gutterText
+    fileprivate func setupCodeView() {
+        self.codeView.backgroundColor = SyntaxHighlightThemes.default.background
+        self.codeView.textColor = SyntaxHighlightThemes.default.plain
+        self.codeView.gutterBackgroundColor = SyntaxHighlightThemes.default.gutterBackground
+        self.codeView.gutterBorderColor = SyntaxHighlightThemes.default.gutterBorder
+        self.codeView.gutterTextColor = SyntaxHighlightThemes.default.gutterText
     }
 
     
-    @IBAction func macroSelectionChanged(sender: AnyObject) {
+    @IBAction func macroSelectionChanged(_ sender: AnyObject) {
         saveMacro(macroSelector.selectedSegmentIndex)
         selectMacro(macroSelector.selectedSegmentIndex)
     }
@@ -66,7 +66,7 @@ class EditMacroViewController: UIViewController {
     ///
     /// - parameter index: The index of the new PythonMacro to load into
     /// the CodeView
-    func selectMacro(index: Int) {
+    func selectMacro(_ index: Int) {
         if index != selectedMacroIndex {
             codeView.text = macros[index].script?.python
             selectedMacroIndex = index
@@ -79,7 +79,7 @@ class EditMacroViewController: UIViewController {
     /// into the CPython runtime.
     ///
     /// - parameter index: The index of the PythonMacro to save.
-    func saveMacro(index: Int) {
+    func saveMacro(_ index: Int) {
         macros[selectedMacroIndex].script?.python = codeView.text
         macros[selectedMacroIndex].registerMacro()
     }

@@ -61,9 +61,9 @@ class PythonObject {
     /// attribute to lookup.
     /// - returns: A string of the attribute contents requested on
     /// success.
-    func getAttrString(attribute: String) -> String? {
+    func getAttrString(_ attribute: String) -> String? {
         let pyOutput = PyObject_GetAttrString(object, attribute)
-        let output = String(UTF8String: PyUnicode_AsUTF8(pyOutput))
+        let output = String(validatingUTF8: PyUnicode_AsUTF8(pyOutput))
         Py_DecRef(pyOutput)
         
         return output
@@ -75,7 +75,7 @@ class PythonObject {
     /// - parameter attribute: A string containing the name of the attribute.
     /// - parameter value: A string containing the new value to set the
     /// attribute to.
-    func setAttrString(attribute: String, value: String) {
+    func setAttrString(_ attribute: String, value: String) {
         PyObject_SetAttrString(object,
                         attribute,
                         PyUnicode_DecodeUTF8(value, value.utf8.count, nil))
@@ -88,13 +88,13 @@ class PythonObject {
     /// - parameter attribute:  A string containing the attribute name to
     /// get the value of.
     /// - returns: A PythonObject reference
-    func getAttr(attribute: String) -> PythonObject {
+    func getAttr(_ attribute: String) -> PythonObject {
         let ref = PyObject_GetAttr(object,
                                    PyUnicode_DecodeUTF8(attribute,
                                                         attribute.utf8.count,
                                                         nil))
 
-        let newObject = PythonObject(object: ref)
+        let newObject = PythonObject(object: ref!)
         Py_DecRef(ref)
 
         return newObject
@@ -107,7 +107,7 @@ class PythonObject {
     /// returns: Optional string contents to the managed PyObject
     func toString() -> String? {
         let ref = PyObject_Str(object)
-        let output = String(UTF8String: PyUnicode_AsUTF8(ref))
+        let output = String(validatingUTF8: PyUnicode_AsUTF8(ref))
         Py_DecRef(ref)
         
         return output
@@ -159,7 +159,7 @@ extension PythonObject: CustomDebugStringConvertible, CustomStringConvertible {
     }
     
     
-    private func customDescription() -> String {
+    fileprivate func customDescription() -> String {
         if let s = self.toString() {
             return "python object: \(s)"
         }

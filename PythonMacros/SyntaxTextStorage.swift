@@ -52,17 +52,17 @@ class SyntaxTextStorage: BaseTextStorage {
         
         setAttributes([
             NSFontAttributeName: UIFont(name: "Menlo", size: 14.0)!,
-            NSForegroundColorAttributeName: SyntaxHighlightThemes.Default.plain
+            NSForegroundColorAttributeName: SyntaxHighlightThemes.default.plain
         ], range: NSRange(location: 0, length: length))
         
-        text.enumerateSubstringsInRange(NSRange(location: 0, length: length), options: .ByWords) {
+        text.enumerateSubstrings(in: NSRange(location: 0, length: length), options: .byWords) {
             [weak self] string, range, _, _ in
             
             guard let string = string else { return }
             
-            let keyword: Bool = self?.pythonKeywords.contains(string.lowercaseString) ?? false
+            let keyword: Bool = self?.pythonKeywords.contains(string.lowercased()) ?? false
             if keyword {
-                self?.addAttribute(NSForegroundColorAttributeName, value: SyntaxHighlightThemes.Default.keyword, range: range)
+                self?.addAttribute(NSForegroundColorAttributeName, value: SyntaxHighlightThemes.default.keyword, range: range)
             }
         }
         

@@ -13,26 +13,26 @@ import UIKit
 /// any NSTextStorage subclasses.
 class BaseTextStorage: NSTextStorage {
     
-    private let storage = NSMutableAttributedString()
+    fileprivate let storage = NSMutableAttributedString()
     
     override var string: String {
         return storage.string
     }
     
-    override func attributesAtIndex(location: Int, effectiveRange range: NSRangePointer) -> [String : AnyObject] {
-        return storage.attributesAtIndex(location, effectiveRange: range)
+    override func attributes(at location: Int, effectiveRange range: NSRangePointer?) -> [String : Any] {
+        return storage.attributes(at: location, effectiveRange: range)
     }
     
     
-    override func replaceCharactersInRange(range: NSRange, withString str: String) {
+    override func replaceCharacters(in range: NSRange, with str: String) {
         let beforeLength = length
-        storage.replaceCharactersInRange(range, withString: str)
-        edited(.EditedCharacters, range: range, changeInLength: length - beforeLength)
+        storage.replaceCharacters(in: range, with: str)
+        edited(.editedCharacters, range: range, changeInLength: length - beforeLength)
     }
     
 
-    override func setAttributes(attrs: [String : AnyObject]?, range: NSRange) {
+    override func setAttributes(_ attrs: [String : Any]?, range: NSRange) {
         storage.setAttributes(attrs, range: range)
-        edited(.EditedAttributes, range: range, changeInLength: 0)
+        edited(.editedAttributes, range: range, changeInLength: 0)
     }
 }

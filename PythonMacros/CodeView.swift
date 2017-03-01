@@ -62,7 +62,7 @@ class CodeView: UIView {
 
 
     /// Property containing the background color for the gutter
-    @IBInspectable var gutterBackgroundColor: UIColor = UIColor.grayColor() {
+    @IBInspectable var gutterBackgroundColor: UIColor = UIColor.gray {
         didSet {
             textView?.gutterFillColor = gutterBackgroundColor
         }
@@ -70,7 +70,7 @@ class CodeView: UIView {
 
 
     /// property containing the color to use for the line numbers
-    @IBInspectable var gutterTextColor: UIColor = UIColor.blackColor() {
+    @IBInspectable var gutterTextColor: UIColor = UIColor.black {
         didSet {
             textView?.gutterTextColor = gutterTextColor
             layoutManager?.textColor = gutterTextColor
@@ -79,7 +79,7 @@ class CodeView: UIView {
 
 
     /// Property containing the color og the gutter border
-    @IBInspectable var gutterBorderColor: UIColor = UIColor.blackColor() {
+    @IBInspectable var gutterBorderColor: UIColor = UIColor.black {
         didSet {
             textView?.gutterBorderColor = gutterBorderColor
         }
@@ -106,7 +106,7 @@ class CodeView: UIView {
     /// Property enabling editing support for the text view
     @IBInspectable var canEdit: Bool = true {
         didSet {
-            textView?.editable = canEdit
+            textView?.isEditable = canEdit
         }
     }
 
@@ -136,7 +136,7 @@ class CodeView: UIView {
     
 
     /// A private method for setting up this view
-    private func setup() {
+    fileprivate func setup() {
         textContainer = NSTextContainer()
         
         layoutManager = LineNumberLayoutManager()
@@ -152,7 +152,7 @@ class CodeView: UIView {
 
     /// A private method used to setup the gutter region.  This entails
     /// defining the exclusion zone used for the gutter
-    private func setupGutterRegion() {
+    fileprivate func setupGutterRegion() {
         let bp = UIBezierPath(rect: CGRect(x: CGFloat(0.0),
                                  y: CGFloat(0.0),
                              width: gutterWidth,
@@ -163,7 +163,7 @@ class CodeView: UIView {
     
 
     /// A private method for initializing the textview used.
-    private func setupTextView() {
+    fileprivate func setupTextView() {
         textView = LineNumberTextView(frame: self.bounds, textContainer: textContainer)
         textView.text = text
         textView.gutterFillColor = gutterBackgroundColor
@@ -171,56 +171,56 @@ class CodeView: UIView {
         textView.gutterStrokeWidth = gutterBorderWidth
         textView.gutterBorderColor = gutterBorderColor
         textView.font = font
-        textView.backgroundColor = UIColor.clearColor()
-        textView.editable = canEdit
-        textView.autocapitalizationType = .None
-        textView.autocorrectionType = .No
+        textView.backgroundColor = UIColor.clear
+        textView.isEditable = canEdit
+        textView.autocapitalizationType = .none
+        textView.autocorrectionType = .no
         setupInputAccessoryView()
         addSubview(textView)
     }
 
     
-    private func setupInputAccessoryView() {
+    fileprivate func setupInputAccessoryView() {
         let rect = CGRect(x: 0.0, y: 0.0, width: 10.0, height: 44.0)
         let bar = UIToolbar(frame: rect)
         textView.inputAccessoryView = bar
         textView.inputAccessoryView?.sizeToFit()
         
         bar.items = [
-            UIBarButtonItem(title: "tab", style: .Plain, target: self, action: #selector(self.tab)),
-            UIBarButtonItem(title: "undo", style: .Plain, target: nil, action: nil),
-            UIBarButtonItem(title: "_", style: .Plain, target: self, action: #selector(self.underscore)),
-            UIBarButtonItem(title: "<", style: .Plain, target: self, action: #selector(self.lessThen)),
-            UIBarButtonItem(title: ">", style: .Plain, target: self, action: #selector(self.greaterThen)),
-            UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil),
-            UIBarButtonItem(title: "{", style: .Plain, target: self, action: #selector(self.openBrace)),
-            UIBarButtonItem(title: "}", style: .Plain, target: self, action: #selector(self.closeBrace)),
-            UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil),
-            UIBarButtonItem(title: "[", style: .Plain, target: self, action: #selector(self.openSquareBrace)),
-            UIBarButtonItem(title: "]", style: .Plain, target: self, action: #selector(self.closeSquareBrace)),
-            UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil),
-            UIBarButtonItem(title: "'", style: .Plain, target: self, action: #selector(self.singleQuote)),
-            UIBarButtonItem(title: ",", style: .Plain, target: self, action: #selector(self.comma)),
-            UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil),
-            UIBarButtonItem(title: "(", style: .Plain, target: self, action: #selector(self.openParen)),
-            UIBarButtonItem(title: ")", style: .Plain, target: self, action: #selector(self.closeParen)),
-            UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil),
-            UIBarButtonItem(title: "+", style: .Plain, target: self, action: #selector(self.plus)),
-            UIBarButtonItem(title: "-", style: .Plain, target: self, action: #selector(self.minus)),
-            UIBarButtonItem(title: "/", style: .Plain, target: self, action: #selector(self.divide)),
-            UIBarButtonItem(title: "*", style: .Plain, target: self, action: #selector(self.multiply)),
-            UIBarButtonItem(title: "=", style: .Plain, target: self, action: #selector(self.equals)),
-            UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil),
-            UIBarButtonItem(title: ":", style: .Plain, target: self, action: #selector(self.colon)),
-            UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil),
-            UIBarButtonItem(title: "Done", style: .Plain, target: self, action: #selector(self.doneButton(_:)))
+            UIBarButtonItem(title: "tab", style: .plain, target: self, action: #selector(self.tab)),
+            UIBarButtonItem(title: "undo", style: .plain, target: nil, action: nil),
+            UIBarButtonItem(title: "_", style: .plain, target: self, action: #selector(self.underscore)),
+            UIBarButtonItem(title: "<", style: .plain, target: self, action: #selector(self.lessThen)),
+            UIBarButtonItem(title: ">", style: .plain, target: self, action: #selector(self.greaterThen)),
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+            UIBarButtonItem(title: "{", style: .plain, target: self, action: #selector(self.openBrace)),
+            UIBarButtonItem(title: "}", style: .plain, target: self, action: #selector(self.closeBrace)),
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+            UIBarButtonItem(title: "[", style: .plain, target: self, action: #selector(self.openSquareBrace)),
+            UIBarButtonItem(title: "]", style: .plain, target: self, action: #selector(self.closeSquareBrace)),
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+            UIBarButtonItem(title: "'", style: .plain, target: self, action: #selector(self.singleQuote)),
+            UIBarButtonItem(title: ",", style: .plain, target: self, action: #selector(self.comma)),
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+            UIBarButtonItem(title: "(", style: .plain, target: self, action: #selector(self.openParen)),
+            UIBarButtonItem(title: ")", style: .plain, target: self, action: #selector(self.closeParen)),
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+            UIBarButtonItem(title: "+", style: .plain, target: self, action: #selector(self.plus)),
+            UIBarButtonItem(title: "-", style: .plain, target: self, action: #selector(self.minus)),
+            UIBarButtonItem(title: "/", style: .plain, target: self, action: #selector(self.divide)),
+            UIBarButtonItem(title: "*", style: .plain, target: self, action: #selector(self.multiply)),
+            UIBarButtonItem(title: "=", style: .plain, target: self, action: #selector(self.equals)),
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+            UIBarButtonItem(title: ":", style: .plain, target: self, action: #selector(self.colon)),
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+            UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.doneButton(_:)))
         ]
             
         
     }
     
     
-    func doneButton(barButton: UIBarButtonItem) {
+    func doneButton(_ barButton: UIBarButtonItem) {
         textView.resignFirstResponder()
     }
 
@@ -240,13 +240,13 @@ class CodeView: UIView {
 
 
 extension CodeView {
-    func insertString(str: String) {
+    func insertString(_ str: String) {
         guard let r = textView.selectedTextRange else { return }
 
-        if r.empty {
+        if r.isEmpty {
             textView.insertText(str)
         } else {
-            textView.replaceRange(r, withText: str)
+            textView.replace(r, withText: str)
         }
     }
     
